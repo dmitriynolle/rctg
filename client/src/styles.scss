@@ -1,0 +1,49 @@
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -180px;
+}
+
+.big {
+  font-size: x-large;
+}
+
+.big16 {
+  font-size: 16pt;
+}
+
+.btn, .form-control{
+  border-radius: 30px;
+}
+
+.btn-l {
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.btn-r {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.border {
+  border-radius: 30px;
+  border: solid 1px #f49943;
+}
+
+.light {
+  color: #cfd1d3;
+}
+
+.bg {
+  background: #8ed5ff;
+  }
+
+.bg-outline {
+  border: solid 1px #8ad1fb;
+}

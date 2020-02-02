@@ -1,0 +1,39 @@
+<body>
+
+<select class="btn custom-select big my-3" id="selectGame" [(ngModel)]="gameId" (change)="changeGame()">
+  <option value="0">Выберите этап</option>
+  <option *ngFor="let item of nameGames" value="{{item.id}}">{{item.namegames}}</option>
+</select>
+
+<span *ngFor="let item of fakeArray; index as i" class="btn p-2 big" [style.width]="test"
+      [class.bg]="getSelectSu(i+1)" (click)="su=i+1">СУ {{i + 1}}
+  <span *ngIf="fakeArray[i] != 10000 && fakeArray[i] > 1" style="font-size: large"> ({{fakeArray[i]}})</span>
+</span>
+
+<div class="row">
+  <div class="col-2">
+    <input type="text" class="form-control big my-3" style="width: 65px; text-align: center" [(ngModel)]="number"
+           (change)="changeNumber()">
+  </div>
+  <div class="col-10">
+    <select class="btn custom-select big my-3" id="selectUser" [(ngModel)]="userName" (change)="changeUser()"
+            style="width: 100%">
+      <option value="0">Выберите участника</option>
+      <option *ngFor="let item of nameUsers" value="{{item.username}}">{{item.username}}</option>
+    </select>
+  </div>
+</div>
+
+<span *ngFor="let i of [1, 2, 6]" class="btn p-2 big" style="width: 33%; text-align: center"
+      [class.bg]="selectFactor(i)">X {{i}}</span>
+
+<div class="row">
+  <div class="col-2 btn bg my-3 py-2" [routerLink]="['']"><img src="../../../assets/close.png"/></div>
+  <div class="col-10">
+    <button class="btn bg big my-3" type="button" style="width: 100%"
+            [disabled]="su == 0 || factor == 0 || gameId == 0 || userName == '0'"
+            [routerLink]="['/su2', gameId, userId, su]">СТАРТ</button>
+  </div>
+</div>
+
+</body>

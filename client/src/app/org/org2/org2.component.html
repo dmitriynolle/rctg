@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-2 btn bg my-2 py-1" [routerLink]="['/org']"><img src="../../../assets/close.png"/></div>
+  <div class="col-10 btn">
+    <select class="btn custom-select big16" [(ngModel)]="name"
+            (change)="getSelectNameGames()" name="game" id="1">
+      <option value="0">Выберите соревнование</option>
+      <option *ngFor="let item of gamesName" value="{{item.namegames}}">{{item.namegames}}</option>
+    </select>
+  </div>
+</div>
+
+<table style="width: 100%">
+  <thead>
+  <tr style="border-bottom: solid 2px black">
+    <th>№</th>
+    <th>Номер</th>
+    <th class="p-2">ФИО</th>
+    <th>Баллы</th>
+    <th>Время</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of etap; let i = index" [class.light]="item.summa>10000">
+    <td>{{i + 1}}</td>
+    <td>{{item.nomeruser}}</td>
+    <td class="p-2">{{item.username}}</td>
+    <td>{{item.summa}}</td>
+    <td>{{item.timeuser}}</td>
+  </tr>
+  </tbody>
+</table>
