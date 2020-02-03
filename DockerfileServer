@@ -1,7 +1,7 @@
 FROM openjdk:11 AS builder
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
-COPY server/build.gradle server/settings.gradle server/gradlew $APP_HOME
+COPY server/build.gradle.kts server/settings.gradle.kts server/gradlew $APP_HOME
 COPY server/gradle $APP_HOME/gradle
 RUN ./gradlew build || return 0
 COPY server .
