@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  rctg-db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password1!
+    ports:
+      - '3306:3306'
+    volumes:
+      - /data/rctg/volume/mysql:/var/lib/mysql
+
+  rctg-server:
+    build:
+      context: .
+      dockerfile: DockerfileServer
+    ports:
+      - '8080:8080'
