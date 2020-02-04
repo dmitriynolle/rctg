@@ -4,7 +4,8 @@ services:
   rctg-db:
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: password1!
+      - MYSQL_ROOT_PASSWORD=password1!
+      - MYSQL_DATABASE=rctg
     ports:
       - '3306:3306'
     volumes:
