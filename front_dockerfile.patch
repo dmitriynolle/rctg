@@ -1,0 +1,162 @@
+Index: docker-compose.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- docker-compose.yaml	(revision 562cc68552eda96d1a77c1fe383a49ae9353a18a)
++++ docker-compose.yaml	(date 1581013176011)
+@@ -9,7 +9,7 @@
+     ports:
+       - '3306:3306'
+     volumes:
+-      - /data/rctg/volume/mysql:/var/lib/mysql
++      - ./data/rctg/volume/mysql:/var/lib/mysql
+ 
+   rctg-server:
+     build:
+@@ -17,3 +17,15 @@
+       dockerfile: DockerfileServer
+     ports:
+       - '8080:8080'
++    depends_on:
++      - rctg-db
++    restart: on-failure
++
++  rctg-client:
++    build:
++      context: .
++      dockerfile: DockerfileClient
++    ports:
++      - 80:80
++    depends_on:
++      - rctg-server
+Index: client/src/app/data/repository.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- client/src/app/data/repository.ts	(revision 562cc68552eda96d1a77c1fe383a49ae9353a18a)
++++ client/src/app/data/repository.ts	(date 1581013928088)
+@@ -7,7 +7,7 @@
+ @Injectable({providedIn: 'root'})
+ export class Repository {
+ //  users: UserModel [];
+-  path = 'http://localhost:8080/';
++  path = 'http://rctrophy.ru/api/';
+ 
+   constructor(private http: HttpClient) {
+   }
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(revision 562cc68552eda96d1a77c1fe383a49ae9353a18a)
++++ .gitignore	(date 1581015931207)
+@@ -9,4 +9,4 @@
+ *.ipr
+ out/
+ 
+-volumes/
++data/
+Index: client/nginx/nginx.conf
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- client/nginx/nginx.conf	(date 1581015019605)
++++ client/nginx/nginx.conf	(date 1581015019605)
+@@ -0,0 +1,71 @@
++user  nginx;
++worker_processes  auto;
++
++error_log  /var/log/nginx/error.log warn;
++pid        /var/run/nginx.pid;
++
++events {
++    worker_connections  1024;
++}
++
++http {
++    include       /etc/nginx/mime.types;
++    types {
++        application/font-woff2           woff2;
++    }
++    default_type  application/octet-stream;
++
++    log_format json_combined escape=json
++      '{'
++        '"remote_addr":"$remote_addr",'
++        '"remote_user":"$remote_user",'
++        '"time_local":"$time_local",'
++        '"request":"$request",'
++        '"status": "$status",'
++        '"body_bytes_sent":"$body_bytes_sent",'
++        '"http_referrer":"$http_referer",'
++        '"http_user_agent":"$http_user_agent",'
++        '"http_x_forwarded_for":"$http_x_forwarded_for",'
++        '"request_length":"$request_length",'
++        '"request_time":"$request_time"'
++      '}';
++
++    access_log  /var/log/nginx/access.log json_combined;
++
++    sendfile        on;
++    tcp_nopush      on;
++    tcp_nodelay     on;
++
++    keepalive_timeout  65;
++
++    gzip  on;
++    gzip_types text/plain text/css application/json text/xml application/xml application/xml+rss application/javascript image/svg+xml;
++    gzip_static on;
++
++    client_max_body_size 40m;
++
++    server {
++        listen 80;
++
++        charset utf-8;
++
++        location /_check {
++            return 200 'no content';
++        }
++
++        location @index {
++            root       /usr/share/nginx/html;
++            add_header Cache-Control 'no-cache, must-revalidate';
++            try_files  /index.html =404;
++        }
++
++        location / {
++            root      /usr/share/nginx/html;
++            index     index.html;
++        }
++
++        location /api {
++          proxy_pass http://rctg-server:8080/;
++        }
++    }
++}
+Index: DockerfileClient
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- DockerfileClient	(date 1581006665353)
++++ DockerfileClient	(date 1581006665353)
+@@ -0,0 +1,14 @@
++FROM node:12.4.0-stretch as builder
++
++WORKDIR /project
++
++COPY client/package.json client/package-lock.json ./
++RUN npm ci
++
++COPY client .
++RUN npm run build
++
++FROM nginx:stable-perl
++
++COPY --from=builder /project/dist/nnrctg /usr/share/nginx/html
++COPY client/nginx /etc/nginx
