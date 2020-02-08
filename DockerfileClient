@@ -1,0 +1,14 @@
+FROM node:12.4.0-stretch as builder
+
+WORKDIR /project
+
+COPY client/package.json client/package-lock.json ./
+RUN npm ci
+
+COPY client .
+RUN npm run build
+
+FROM nginx:stable-perl
+
+COPY --from=builder /project/dist/nnrctg /usr/share/nginx/html
+COPY client/nginx /etc/nginx

@@ -17,3 +17,15 @@ services:
       dockerfile: DockerfileServer
     ports:
       - '8080:8080'
+    depends_on:
+      - rctg-db
+    restart: on-failure
+
+  rctg-client:
+    build:
+      context: .
+      dockerfile: DockerfileClient
+    ports:
+      - 80:80
+    depends_on:
+      - rctg-server
