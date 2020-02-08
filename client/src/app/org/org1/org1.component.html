@@ -26,7 +26,7 @@
       <span>Выберите количество спец участков</span>
       <div class="form-check form-check-inline m-2" style="width: 100%">
       <span *ngFor="let item of [1,2,3,4,5]" class="btn p-2 big" style="width: 20%; text-align: center"
-            [class.badge-warning]="getSelectSu(item)"
+            [class.bg]="getSelectSu(item)"
             (click)="su = item">{{item}}</span>
       </div>
       <span>Выберите варианты пенализации</span>
