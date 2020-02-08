@@ -49,7 +49,7 @@ export class Su2Component implements OnInit {
 
   onOffTimer() {
     if (this.bg[0] == true) {
-      this.timer = timer(1000, 100).subscribe(t => {
+      this.timer = timer(1000, 1000).subscribe(t => {
         this.sec++;
         this.allSec++;
         if (this.sec == 60) {
