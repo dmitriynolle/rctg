@@ -52,8 +52,8 @@ export class Org1Component implements OnInit {
     this.ball.length = 0;
     this.su = 0;
     this.nameGames.length = 0;
-    for (let i = 0; i < this.shtrafBall.length; i++) {
-      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i + 1, su: null});
+    for (let i = this.shtrafBall[0].id; i < this.shtrafBall[0].id + this.shtrafBall.length; i++) {
+      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i, su: null});
     }
     console.log(this.nameGames);
   }
@@ -141,14 +141,27 @@ export class Org1Component implements OnInit {
     return id == this.su;
   }
 
-  getSelectBall(id: number) {
+  getSelectBall(id: number, sid: number) {
     if (this.ball[id] != true) {
       this.ball[id] = true;
-      this.nameGames.splice(id, 1, {id: this.nameGames[id].id, namegames: this.gamesName, priznak: 1, shtrafid: id + 1, su: this.su});
+      this.nameGames.splice(id, 1, {
+        id: this.nameGames[id].id,
+        namegames: this.gamesName,
+        priznak: 1,
+        shtrafid: sid,
+        su: this.su
+      });
     } else {
       this.ball[id] = false;
-      this.nameGames.splice(id, 1, {id: this.nameGames[id].id, namegames: this.gamesName, priznak: 0, shtrafid: id + 1, su: this.su});
+      this.nameGames.splice(id, 1, {
+        id: this.nameGames[id].id,
+        namegames: this.gamesName,
+        priznak: 0,
+        shtrafid: sid,
+        su: this.su
+      });
     }
+    console.log(this.nameGames);
   }
 
   getSelectNameGames() {

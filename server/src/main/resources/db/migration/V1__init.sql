@@ -17,8 +17,7 @@ CREATE TABLE IF NOT EXISTS `etap`
     `summa`      int(20) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-  AUTO_INCREMENT = 21;
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `namegames`
 (
@@ -29,8 +28,7 @@ CREATE TABLE IF NOT EXISTS `namegames`
     `su`        int(11) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-  AUTO_INCREMENT = 97;
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `rcusers`
 (
@@ -40,8 +38,7 @@ CREATE TABLE IF NOT EXISTS `rcusers`
     `factor`     int(5)      DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8
-  AUTO_INCREMENT = 12;
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE IF NOT EXISTS `shtrafball`
 (
@@ -52,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `shtrafball`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8
-  AUTO_INCREMENT = 11;
+  AUTO_INCREMENT = 10;
 
 CREATE VIEW `etapview` AS
 select `a`.`id`         AS `id`,
@@ -81,3 +78,14 @@ select `a`.`id`         AS `id`,
 from (`namegames` `a`
          left join `shtrafball` `b` on ((`a`.`shtrafid` = `b`.`id`)))
 where (`a`.`priznak` = 1);
+
+INSERT INTO `shtrafball` (`id`, `shtrafname`, `shtrafball`, `ball`)
+VALUES (1, 'Касание сигнальной ленты', 5, 0),
+       (2, 'Касание створа ворот', 10, 0),
+       (3, 'Выезд за пределы трассы', 20, 0),
+       (4, 'Повреждение трассы', 30, 0),
+       (5, 'Пропуск ворот', 40, 0),
+       (6, 'Помощь руками/ногами', 75, 0),
+       (7, 'Штрафные минуты', 25, 0),
+       (8, 'Спор с судьей', 200, 0),
+       (9, 'Сход', 400, 0);
