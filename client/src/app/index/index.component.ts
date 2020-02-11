@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
 
   enter() {
     if (this.password == this.secret.password) {
-      document.location.href = "/main";
+      document.location.href = "main";
     }
     this.password = '';
   }
