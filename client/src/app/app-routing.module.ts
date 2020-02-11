@@ -7,9 +7,11 @@ import {MainComponent} from './main/main.component';
 import {OrgComponent} from './org/org.component';
 import {Org2Component} from './org/org2/org2.component';
 import {Org3Component} from './org/org3/org3.component';
+import {IndexComponent} from "./index/index.component";
 
 const appRoutes = [
-  {path: '', component: MainComponent},
+  {path: '', component: IndexComponent},
+  {path: 'main', component: MainComponent},
   {path: 'org', component: OrgComponent},
   {path: 'org1', component: Org1Component},
   {path: 'org2', component: Org2Component},

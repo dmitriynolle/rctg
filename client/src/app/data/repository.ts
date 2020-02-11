@@ -6,9 +6,8 @@ import {ShtrafBall} from './shtraf';
 
 @Injectable({providedIn: 'root'})
 export class Repository {
-//  users: UserModel [];
   path = 'http://rctrophy.ru/api/';
-
+//     path = 'http://localhost:8080/'
   constructor(private http: HttpClient) {
   }
 
