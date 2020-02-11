@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Repository} from "../data/repository";
 
 @Component({
   selector: 'app-index',
@@ -7,15 +8,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class IndexComponent implements OnInit {
   password: any;
+  private secret: { password: string };
 
-  constructor() {
+  constructor(private repository: Repository) {
   }
 
   ngOnInit() {
+    this.repository.getSecret().subscribe((rec: { password: string }) => {
+      this.secret = rec;
+    });
   }
 
   enter() {
-    if (this.password == '241783') {
+    if (this.password == this.secret.password) {
       document.location.href = "/main";
     }
     this.password = '';
