@@ -9,6 +9,7 @@ import {Repository} from "../data/repository";
 export class IndexComponent implements OnInit {
   password: any;
   private secret: { password: string };
+  path = true;
 
   constructor(private repository: Repository) {
   }
@@ -21,8 +22,9 @@ export class IndexComponent implements OnInit {
 
   enter() {
     if (this.password == this.secret.password) {
-      document.location.href = "main";
+      this.path = false;
+    } else {
+      this.path = true;
     }
-    this.password = '';
   }
 }
