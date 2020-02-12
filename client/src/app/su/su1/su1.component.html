@@ -5,10 +5,10 @@
   <option *ngFor="let item of nameGames" value="{{item.id}}">{{item.namegames}}</option>
 </select>
 
-<span *ngFor="let item of fakeArray; index as i" class="btn p-2 big" [style.width]="test"
-      [class.bg]="getSelectSu(i+1)" (click)="su=i+1">СУ {{i + 1}}
+<button *ngFor="let item of fakeArray; index as i" class="btn p-2 big" [style.width]="test"
+        [class.bg]="getSelectSu(i+1)" (click)="su=i+1" [disabled]="fakeArray[i] != 10000">СУ {{i + 1}}
   <span *ngIf="fakeArray[i] != 10000 && fakeArray[i] > 1" style="font-size: large"> ({{fakeArray[i]}})</span>
-</span>
+</button>
 
 <div class="row">
   <div class="col-2">

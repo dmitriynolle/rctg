@@ -47,6 +47,7 @@ export class Org1Component implements OnInit {
   }
 
   setAddGames() {
+    this.gamesName = "";
     this.visibleNameGames = 0;
     this.addEditNameGames = 0;
     this.ball.length = 0;
@@ -89,6 +90,7 @@ export class Org1Component implements OnInit {
   }
 
   setAddUser() {
+    this.userName = "";
     this.addEditUser = 0;
     this.visibleUser = 0;
     this.userNumber = null;

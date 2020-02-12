@@ -37,11 +37,12 @@
         <div class="col-2">{{item.shtrafball}}</div>
       </div>
       <div class="row">
-        <div *ngIf="addEditNameGames == 0 && visibleNameGames == 0" class="col-6 btn bg">
-          <img class="py-1 mx-1" src="../../../assets/diskette.png" (click)="setAddSaveGames()">
-        </div>
-        <div *ngIf="addEditNameGames == 1 && visibleNameGames == 0" class="col-6 btn bg">
-          <img class="py-1 mx-1" src="../../../assets/diskette.png" (click)="setEditSaveGames()">
+        <button [disabled]="!gamesName || su == 0" *ngIf="addEditNameGames == 0 && visibleNameGames == 0"
+                class="col-6 btn bg" (click)="setAddSaveGames()">
+          <img class="py-1 mx-1" src="../../../assets/diskette.png">
+        </button>
+        <div *ngIf="addEditNameGames == 1 && visibleNameGames == 0" class="col-6 btn bg" (click)="setEditSaveGames()">
+          <img class="py-1 mx-1" src="../../../assets/diskette.png">
         </div>
         <div *ngIf="visibleNameGames == 0" class="col-6 btn bg">
           <img class="py-1 mx-1" src="../../../assets/close.png"
@@ -85,11 +86,11 @@
     </div>
     <div class="row">
       <button *ngIf="addEditUser == 0 && visibleUser == 0" class="col-6 btn bg"
-              [disabled]="!userName || !userNumber || factor == 0">
-        <img class="py-1 mx-1" src="../../../assets/diskette.png" (click)="setAddSaveUser()">
+              [disabled]="!userName || !userNumber || factor == 0" (click)="setAddSaveUser()">
+        <img class="py-1 mx-1" src="../../../assets/diskette.png">
       </button>
-      <div *ngIf="addEditUser == 1 && visibleUser == 0" class="col-6 btn bg">
-        <img class="py-1 mx-1" src="../../../assets/diskette.png" (click)="setEditSaveUser()">
+      <div *ngIf="addEditUser == 1 && visibleUser == 0" class="col-6 btn bg" (click)="setEditSaveUser()">
+        <img class="py-1 mx-1" src="../../../assets/diskette.png">
       </div>
       <div *ngIf="visibleUser == 0" class="col-6 btn bg">
         <img class="py-1 mx-1" src="../../../assets/close.png"
@@ -98,7 +99,7 @@
     </div>
   </div>
   <div class="row" *ngIf="visibleNameGames == 1 && visibleUser == 1">
-    <div class="col-2 btn bg my-4 py-2" [routerLink]="['/org']"><img src="../../../assets/close.png"/></div>
+    <div class="col-2 btn bg my-4 py-2" [routerLink]="['/org']"><img src="../../../assets/close.png"></div>
     <div class="col-10" >
       <button class="btn bg big my-4" style="width: 100%"
               [disabled]="(!userName || userRegistred == 1) || !gamesName "
