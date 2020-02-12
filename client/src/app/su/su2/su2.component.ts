@@ -49,7 +49,7 @@ export class Su2Component implements OnInit {
 
   onOffTimer() {
     if (this.bg[0] == true) {
-      this.timer = timer(1000, 1000).subscribe(t => {
+      this.timer = timer(1000, 10).subscribe(t => {
         this.sec++;
         this.allSec++;
         if (this.sec == 60) {
@@ -89,7 +89,7 @@ export class Su2Component implements OnInit {
       } else {
         if (this.nameGamesOpis[i].shtrafid == 7) {
           if (this.min - 5 > 0) {
-            this.summa[i] = (this.min - 5) * this.nameGamesOpis[i].shtrafball * this.userEtap[0].factoruser;
+            this.summa[i] = (this.min - 5) * this.nameGamesOpis[i].shtrafball;
           } else {
             this.summa[i] = this.nameGamesOpis[i].ball * this.nameGamesOpis[i].shtrafball;
           }
