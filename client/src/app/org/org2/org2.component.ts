@@ -41,6 +41,7 @@ export class Org2Component implements OnInit {
         }
         this.etap[i].timeuser = this.time[i];
       }
+      this.etap = this.etap.sort(sortBy('timeuser'));
       this.etap = this.etap.sort(sortBy('summa'));
     });
   }
