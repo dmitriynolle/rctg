@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription, timer} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
-import {ShtrafBall} from '../../data/shtraf';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ShtrafBall, UserEtapStata} from '../../data/shtraf';
 import {Repository} from '../../data/repository';
 import {Etap, EtapView} from '../../data/registration';
 
@@ -22,11 +22,14 @@ export class Su2Component implements OnInit {
   bg: boolean[] = [true, false, false];
   userEtap: Array<EtapView> = [];
   nameGamesOpis: Array<ShtrafBall> = [];
+  userEtapStata: Array<UserEtapStata> = [];
   summa: Array<number> = [];
   allSumma = 0;
   etap: Array<Etap> = [];
+  popupwindow: boolean = true;
+  popuptext: string;
 
-  constructor(private activateRoute: ActivatedRoute, private repository: Repository) {
+  constructor(private activateRoute: ActivatedRoute, private repository: Repository, private router: Router) {
     this.subscription = activateRoute.params.subscribe(data => {
       this.game = data.game;
       this.user = data.user;
@@ -99,7 +102,7 @@ export class Su2Component implements OnInit {
       }
     }
     this.allSumma = this.summa.reduce((a, b) => a + b);
-    console.log(this.summa);
+    // console.log(this.summa);
 
   }
 
@@ -149,7 +152,40 @@ export class Su2Component implements OnInit {
       su2: this.userEtap[0].su2, su3: this.userEtap[0].su3, su4: this.userEtap[0].su4, su5: this.userEtap[0].su5,
       summa: this.userEtap[0].summa, timeuser: this.userEtap[0].timeuser + this.allSec
     });
-    console.log(this.userEtap, this.etap);
-    this.repository.saveEtap(this.etap[0]);
+    for (let i = 0; i < this.nameGamesOpis.length; i++) {
+      if (this.nameGamesOpis[i].ball != 0) {
+        this.userEtapStata.push({
+          nomeretap: this.userEtap[0].gameid,
+          nameetap: this.userEtap[0].namegames,
+          nomersu: this.su,
+          nomeruser: this.userEtap[0].userid,
+          nameuser: this.userEtap[0].username,
+          nameshtraf: this.nameGamesOpis[i].shtrafname,
+          sum: this.nameGamesOpis[i].ball
+        });
+      }
+    }
+    console.log(this.userEtapStata);
+    this.popup(1);
+    this.repository.saveEtap(this.etap[0]).subscribe(rec => {
+      this.repository.saveUserEtapStata(this.userEtapStata).subscribe(rec => {
+        this.popupwindow = true;
+        this.router.navigate(['/su1', this.game])
+      }, error => {
+        this.popup(2);
+      });
+    }, error => {
+      this.popup(2);
+    });
+
+  }
+
+  private popup(i: number) {
+    this.popupwindow = false;
+    if (i == 2) {
+      this.popuptext = "Ошибка записи. Проверте интернет и повторите попытку";
+    } else {
+      this.popuptext = 'Идет запись. Пожалуйста подождите';
+    }
   }
 }

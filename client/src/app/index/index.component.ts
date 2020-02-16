@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Repository} from "../data/repository";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-index',
@@ -11,7 +12,7 @@ export class IndexComponent implements OnInit {
   private secret: { password: string };
   path = true;
 
-  constructor(private repository: Repository) {
+  constructor(private repository: Repository, private router: Router) {
   }
 
   ngOnInit() {
@@ -22,9 +23,9 @@ export class IndexComponent implements OnInit {
 
   enter() {
     if (this.password == this.secret.password) {
-      this.path = false;
+      this.router.navigate(["main"]);
     } else {
-      this.path = true;
+      this.password = '';
     }
   }
 }

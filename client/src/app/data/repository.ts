@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {NameGames, UserModel} from './user.model';
 import {HttpClient} from '@angular/common/http';
 import {Etap} from './registration';
-import {ShtrafBall} from './shtraf';
+import {ShtrafBall, UserEtapStata} from './shtraf';
 
 @Injectable({providedIn: 'root'})
 export class Repository {
-  path = 'http://rctrophy.ru/api/';
-  // path = 'http://localhost:8080/'
+  // path = 'http://rctrophy.ru/api/';
+  path = 'http://localhost:8080/'
 
   constructor(private http: HttpClient) {
   }
@@ -48,6 +48,10 @@ export class Repository {
     return this.http.get(this.path + 'selectgame?gamename=' + gamename);
   }
 
+  getUserEtapStata(gameId: number, userId: number) {
+    return this.http.get(this.path + 'selectstata?nomeretap=' + gameId + '&nomeruser=' + userId);
+  }
+
   saveNameGames(nameGames: NameGames[]) {
     return this.http.post(this.path + 'savenamegames', nameGames);
   }
@@ -57,12 +61,14 @@ export class Repository {
   }
 
   saveEtap(etap: Etap) {
-    return this.http.post(this.path + 'saveetap', etap).subscribe((saveEtap: Etap) => {
-      this.getUsers();
-    });
+    return this.http.post(this.path + 'saveetap', etap)
   }
 
   saveShtraf(shtraf: ShtrafBall) {
     return this.http.post(this.path + 'saveshtraf', shtraf);
+  }
+
+  saveUserEtapStata(userEtapStata: UserEtapStata[]) {
+    return this.http.post(this.path + 'savestata', userEtapStata)
   }
 }

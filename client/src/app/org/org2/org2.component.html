@@ -20,7 +20,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of etap; let i = index" [class.light]="item.summa>10000">
+  <tr *ngFor="let item of etap; let i = index" [class.light]="item.summa>10000"
+      (click)="allInfo(etap[i].gameid, etap[i].userid)">
     <td>{{i + 1}}</td>
     <td>{{item.nomeruser}}</td>
     <td class="p-2">{{item.username}}</td>
@@ -29,3 +30,15 @@
   </tr>
   </tbody>
 </table>
+
+<div [hidden]="popupVisible" class="popup btn" (click)="popupVisible = true" style="width: 90%">
+  <div *ngFor="let item of userEtapStata; index as i">
+    <span class="row px-3 big16" *ngIf="i==0">{{item.nameetap}}</span>
+    <span class="row px-3 big16" *ngIf="i==0">{{item.nameuser}}</span>
+    <span class="row">
+      <span class="col-2">СУ {{item.nomersu}}</span>
+      <span class="col-8">{{item.nameshtraf}}</span>
+      <span class="col-2">{{item.sum}}</span>
+    </span>
+  </div>
+</div>

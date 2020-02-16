@@ -1,11 +1,11 @@
 <img src="../../assets/logo.jpg" style="width: 100px">
-<div style=" position: absolute; left: 50%; top: 50%; transform: translate(-50%, -80%);" [hidden]="!path">
+<div style=" position: absolute; left: 50%; top: 50%; transform: translate(-50%, -80%);">
   <span class="big">Введите пароль</span>
   <p></p>
-  <input type="password" class="form-control big" [(ngModel)]="password" (ngModelChange)="enter()" style="width: 200pt">
-</div>
-<div style=" position: absolute; left: 50%; top: 50%; transform: translate(-50%, -80%);" [hidden]="path">
-  <span class="big">Добро пожаловать</span>
-  <p></p>
-  <span class="btn bg big16" [routerLink]="['/main']">Нажмите для входа</span>
+  <div class="input-group mb-3">
+    <input type="password" class="form-control big" [(ngModel)]="password" style="width: 150pt">
+    <div class="input-group-append">
+      <span (click)="enter()" class="btn bg big16">вход</span>
+    </div>
+  </div>
 </div>

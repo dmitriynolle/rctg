@@ -8,3 +8,14 @@ export class ShtrafBall {
   ) {
   }
 }
+
+export class UserEtapStata {
+  public id?: number;
+  public nomeretap: number;
+  public nameetap: string;
+  public nomersu: number;
+  public nomeruser: number;
+  public nameuser: string;
+  public nameshtraf: string;
+  public sum: number
+}
