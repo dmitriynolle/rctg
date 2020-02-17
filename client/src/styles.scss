@@ -14,11 +14,17 @@ body {
 }
 
 .big16 {
-  font-size: 16pt;
+  font-size: 15pt;
 }
 
-.btn, .form-control{
-  border-radius: 5px;
+.big14 {
+  font-size: 14pt;
+}
+
+.btn, .form-control {
+  border-radius: 10px;
+  //  border: solid 2px black;
+  outline: none;
 }
 
 .btn-l {
@@ -32,8 +38,9 @@ body {
 }
 
 .border {
-  border-radius: 30px;
-  border: solid 1px #ffbb44;
+  border-radius: 10px;
+  //border: solid 2px black;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .light {
@@ -44,12 +51,14 @@ body {
   background: #ffbb44;
 }
 
-.bg-outline {
-  border: solid 1px #ffbb44;
+select:focus,
+input:focus,
+button:focus {
+  outline: none;
 }
 
 .popup {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

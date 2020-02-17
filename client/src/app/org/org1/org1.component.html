@@ -4,50 +4,52 @@
 
   <div *ngIf="visibleUser == 1">
     <span>Выберите или добавте соревнование</span>
-    <div class="row" style="width: 99%">
-      <div class="col-11 btn">
-        <select *ngIf="visibleNameGames != 0" class="btn custom-select big" [(ngModel)]="gamesName"
-                (change)="getSelectNameGames()" name="game" id="1">
+    <div class="row mb-3" style="width: 99%">
+      <div class="col-11 p-1">
+        <select *ngIf="visibleNameGames != 0" class="border big p-2" [(ngModel)]="gamesName"
+                (change)="getSelectNameGames()" name="game" id="1" style="width: 100%">
           <option value="0">Выберите соревнование</option>
           <option *ngFor="let item of games" value="{{item.namegames}}">{{item.namegames}}</option>
         </select>
-        <input *ngIf="visibleNameGames == 0" type="text" class="form-control big"
-               placeholder="Введите название нового соревнования" [(ngModel)]="gamesName">
+        <input *ngIf="visibleNameGames == 0" type="text" class="border big p-1" style="width: 100%"
+               placeholder="Введите название соревнования" [(ngModel)]="gamesName">
       </div>
-      <div *ngIf="addEditNameGames == 0 && visibleNameGames == 1" class="col-1 btn">
-        <img class="p-2 btn bg" src="../../../assets/plus.png" (click)="setAddGames()">
-      </div>
-      <div *ngIf="addEditNameGames == 1 && visibleNameGames == 1" class="col-1 btn">
-        <img class="p-2 btn bg" src="../../../assets/pen_1.png"
+      <div class="col-1 p-1">
+        <img *ngIf="addEditNameGames == 0 && visibleNameGames == 1" class="border bg p-2" src="../../../assets/plus.png"
+             (click)="setAddGames()">
+        <img *ngIf="addEditNameGames == 1 && visibleNameGames == 1" class="border bg p-2"
+             src="../../../assets/pen_1.png"
              (click)="visibleNameGames = 0; addEditNameGames = 1;">
       </div>
     </div>
     <div *ngIf="visibleNameGames == 0">
       <span>Выберите количество спец участков</span>
       <div class="form-check form-check-inline m-2" style="width: 100%">
-      <span *ngFor="let item of [1,2,3,4,5]" class="btn p-2 big" style="width: 20%; text-align: center"
-            [class.bg]="getSelectSu(item)"
+      <span *ngFor="let item of [1,2,3,4,5]" class="p-2 big" style="width: 20%; text-align: center"
+            [class.bg]="getSelectSu(item)" [class.border]="getSelectSu(item)"
             (click)="su = item">{{item}}</span>
       </div>
       <span>Выберите варианты пенализации</span>
-      <div *ngFor="let item of shtrafBall let i = index" class="row my-4" [class.bg]="ball[i]"
-           (click)="getSelectBall(i, item.id)">
-        <div class="col-1">{{i + 1}}</div>
-        <div class="col-9">{{item.shtrafname}}</div>
-        <div class="col-2">{{item.shtrafball}}</div>
+      <div *ngFor="let item of shtrafBall let i = index" class="row py-2 my-1" [class.bg]="ball[i]"
+           [class.border]="ball[i]"
+           (click)="getSelectBall(i, item.id)" style="width: 100%">
+        <span class="col-1">{{i + 1}}</span>
+        <span class="col-9">{{item.shtrafname}}</span>
+        <span class="col-2">{{item.shtrafball}}</span>
       </div>
       <div class="row">
         <button [disabled]="!gamesName || su == 0" *ngIf="addEditNameGames == 0 && visibleNameGames == 0"
-                class="col-6 btn bg" (click)="setAddSaveGames()">
-          <img class="py-1 mx-1" src="../../../assets/diskette.png">
+                class="col-5 border btn bg py-2" (click)="setAddSaveGames()">
+          <img src="../../../assets/diskette.png">
         </button>
-        <div *ngIf="addEditNameGames == 1 && visibleNameGames == 0" class="col-6 btn bg" (click)="setEditSaveGames()">
-          <img class="py-1 mx-1" src="../../../assets/diskette.png">
-        </div>
-        <div *ngIf="visibleNameGames == 0" class="col-6 btn bg">
-          <img class="py-1 mx-1" src="../../../assets/close.png"
-               (click)="visibleNameGames = 1">
-        </div>
+        <span *ngIf="addEditNameGames == 1 && visibleNameGames == 0" class="col-5 border btn bg py-2"
+              (click)="setEditSaveGames()">
+          <img src="../../../assets/diskette.png">
+        </span>
+        <div class="col-2"></div>
+        <span *ngIf="visibleNameGames == 0" class="col-5 border btn bg py-2" (click)="visibleNameGames = 1">
+          <img src="../../../assets/close.png">
+        </span>
       </div>
     </div>
   </div>
@@ -59,51 +61,51 @@
     <span *ngIf="userRegistred == 1" class="text-danger">Пользователь уже зарегестрирован</span>
     <span *ngIf="userRegistred == 2" class="text-danger">Нет такого пользователя</span>
     <span *ngIf="userRegistred == 3" class="text-danger">Это Имя или Номер уже используются</span>
-    <div class="row" style="width: 99%">
-      <div class="btn col-11">
-        <select *ngIf="visibleUser != 0" class="btn custom-select big" [(ngModel)]="userName" id="2"
-                (change)="getSelectUser()">
+    <div class="row my-2" style="width: 99%">
+      <div class="col-11 p-1">
+        <select *ngIf="visibleUser != 0" class="border big p-2" [(ngModel)]="userName" id="2"
+                (change)="getSelectUser()" style="width: 100%">
           <option value="0">Выберите участника</option>
           <option *ngFor="let item of users" value="{{item.username}}">{{item.username}}</option>
         </select>
-        <input *ngIf="visibleUser == 0" type="text" class="form-control big" placeholder="Введите ФИ участника"
-               [(ngModel)]="userName">
+        <input *ngIf="visibleUser == 0" type="text" class="border big p-1" placeholder="Введите ФИ участника"
+               [(ngModel)]="userName" style="width: 100%">
       </div>
-      <div *ngIf="addEditUser == 0 && visibleUser == 1" class="btn col-1">
-        <img class="p-2 btn bg" src="../../../assets/plus.png" (click)="setAddUser()">
-      </div>
-      <div *ngIf="addEditUser == 1 && visibleUser == 1" class="btn col-1">
-        <img class="p-2 btn bg" src="../../../assets/pen_1.png" (click)="addEditUser = 1; visibleUser = 0">
+      <div class="col-1 p-1">
+        <img *ngIf="addEditUser == 0 && visibleUser == 1" class="p-2 border bg" src="../../../assets/plus.png"
+             (click)="setAddUser()">
+        <img *ngIf="addEditUser == 1 && visibleUser == 1" class="p-2 border bg" src="../../../assets/pen_1.png"
+             (click)="addEditUser = 1; visibleUser = 0">
       </div>
     </div>
     <span *ngIf="visibleUser == 0">Введите номер и выберите коэффицент</span>
-    <div class="form-check form-check-inline my-2" style="width: 100%">
-      <input type="text" class="form-control big" style="width: 65px; text-align: center" [(ngModel)]="userNumber"
+    <div class="form-check form-check-inline mt-2" style="width: 100%">
+      <input type="text" class="border big mx-1 py-2" style="width: 65px; text-align: center" [(ngModel)]="userNumber"
              (change)="getSelectNumber(userNumber)">
-      <span *ngFor="let item of [1,2,6]" class="btn p-2 big" style="width: 33%; text-align: center"
-            [class.bg]="getSelectFactor(item)"
+      <span *ngFor="let item of [1,2,6]" class="mx-1 p-2 big" style="width: 33%; text-align: center"
+            [class.bg]="getSelectFactor(item)" [class.border]="getSelectFactor(item)"
             (click)="factor = item">X {{item}}</span>
     </div>
-    <div class="row">
-      <button *ngIf="addEditUser == 0 && visibleUser == 0" class="col-6 btn bg"
+    <div class="row mt-4">
+      <button *ngIf="addEditUser == 0 && visibleUser == 0" class="col-5 border btn bg py-2"
               [disabled]="!userName || !userNumber || factor == 0" (click)="setAddSaveUser()">
         <img class="py-1 mx-1" src="../../../assets/diskette.png">
       </button>
-      <div *ngIf="addEditUser == 1 && visibleUser == 0" class="col-6 btn bg" (click)="setEditSaveUser()">
+      <div *ngIf="addEditUser == 1 && visibleUser == 0" class="col-5 border btn bg py-2" (click)="setEditSaveUser()">
         <img class="py-1 mx-1" src="../../../assets/diskette.png">
       </div>
-      <div *ngIf="visibleUser == 0" class="col-6 btn bg">
-        <img class="py-1 mx-1" src="../../../assets/close.png"
-             (click)="visibleUser = 1">
+      <div class="col-2"></div>
+      <div *ngIf="visibleUser == 0" class="col-5 border btn bg py-2" (click)="visibleUser = 1">
+        <img class="py-1 mx-1" src="../../../assets/close.png">
       </div>
     </div>
   </div>
   <div class="row" *ngIf="visibleNameGames == 1 && visibleUser == 1">
-    <div class="col-2 btn bg my-4 py-2" [routerLink]="['/org']"><img src="../../../assets/close.png"></div>
-    <div class="col-10" >
-      <button class="btn bg big my-4" style="width: 100%"
-              [disabled]="(!userName || userRegistred == 1) || !gamesName "
-              (click)="saveEtap()">Записать</button>
+    <div class="col-2" [routerLink]="['/org']"><img class="btn bg border p-2" src="../../../assets/close.png"></div>
+    <div class="col-10">
+      <button class="btn bg big border" style="width: 100%"
+              [disabled]="(userName == '0' || userRegistred == 1) || gamesName == '0' " (click)="saveEtap()">Записать
+      </button>
     </div>
   </div>
 </div>

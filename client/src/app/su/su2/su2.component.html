@@ -25,40 +25,41 @@
 </div>
 
 <div class="row py-1 my-1">
-  <div *ngIf="sec < 10" class="btn big py-4 bg" style="text-align: center; width: 100%"
+  <div *ngIf="sec < 10" class="border bg" style="text-align: center; width: 100%; font-size: 70px"
        [class.bg-danger]=bg[2] [class.bg-success]=bg[1]
        (click)="onOffTimer()">{{min}} : 0{{sec}}</div>
-  <div *ngIf="sec >= 10" class="btn big py-4 bg" style="text-align: center; width: 100%"
+  <div *ngIf="sec >= 10" class="border bg" style="text-align: center; width: 100%; font-size: 70px"
        [class.bg-danger]=bg[2] [class.bg-success]=bg[1]
        (click)="onOffTimer()">{{min}} : {{sec}}</div>
 </div>
 
 <div class="row" *ngFor="let item of nameGamesOpis; let i = index">
-  <div class="my-2" *ngIf="item.shtrafid != 7" style="width: 100%">
-    <button class="col-10 py-2 px-0 btn bg big16 text-dark btn-r"
+  <div class="border my-1" *ngIf="item.shtrafid != 7" style="width: 100%">
+    <button class="col-10 p-2 bg btn-r btn big16"
             style="text-align: center" [disabled]="item.shtrafid != 5 && item.shtrafid != 9 && bg[0] || allSec == 0"
             (click)="increment(i)">{{item.shtrafname}} <span class="badge badge-danger">{{item.ball}}</span>
       <span style="font-size: large"> ({{item.shtrafball}})</span>
     </button>
-    <button *ngIf="nameGamesOpis[i].ball > 0" class="col-2 py-2 px-0 btn bg-danger big16 btn-l"
-            style="text-align: center" (click)="decrement(i)"
+    <button *ngIf="nameGamesOpis[i].ball > 0" class="col-2 p-2 btn-l btn big16"
+            style="text-align: center; background-color: red" (click)="decrement(i)"
             [disabled]="item.shtrafid != 5 && item.shtrafid != 9 && bg[0] || allSec == 0">-
     </button>
-    <button *ngIf="nameGamesOpis[i].ball == 0" class="col-2 py-2 px-0 btn bg big16 btn-l"
+    <button *ngIf="nameGamesOpis[i].ball == 0" class="col-2 p-2 bg btn-l btn big16"
             style="text-align: center" [disabled]="item.shtrafid != 5 && item.shtrafid != 9 && bg[0] || allSec == 0">:)
     </button>
   </div>
 </div>
 
 <div class="row my-2">
-  <button [disabled]="bg[1]" class="col-2 btn bg py-4" [routerLink]="['/su1', game]"><img
+  <button [disabled]="bg[1]" class="col-2 border btn bg py-3" [routerLink]="['/su1', game]"><img
     src="../../../assets/close.png"/></button>
   <span class="col-1"></span>
-  <button [disabled]="bg[1] || allSec == 0" class="btn big bg py-4 col-9" style="text-align: center"
+  <button [disabled]="bg[1] || allSec == 0 || !popupwindow" class="border btn big bg py-3 col-9"
+          style="text-align: center"
           (click)="saveEtap()">Записать
   </button>
 </div>
 
-<div [hidden]="popupwindow" class="btn big popup" (click)="popupwindow = true">{{popuptext}}</div>
+<div [hidden]="popupwindow" class="border big popup" (click)="popupwindow = true">{{popuptext}}</div>
 
 </body>

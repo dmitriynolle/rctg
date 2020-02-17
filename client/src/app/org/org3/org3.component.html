@@ -21,13 +21,19 @@
   <div class="col-3"><input class="form-control big16" type="text" [(ngModel)]="ball"></div>
 </div>
 <div class="row my-2">
-  <div class="col-6"><button class="btn bg big16" style="width: 100%" (click)="save()"
-                             [disabled]="!ball && !name">Сохранить</button></div>
-  <div class="col-6"><button class="btn bg big16" style="width: 100%" (click)="cancel()"
-                             [disabled]="!ball && !name">Отмена</button></div>
+  <div class="col-6">
+    <button class="btn border bg big16" style="width: 100%" (click)="save()"
+            [disabled]="!ball && !name">Сохранить
+    </button>
+  </div>
+  <div class="col-6">
+    <button class="btn border bg big16" style="width: 100%" (click)="cancel()"
+            [disabled]="!ball && !name">Отмена
+    </button>
+  </div>
 </div>
 <div class="row my-2">
   <div class="col-12">
-    <button class="btn bg big16" style="width: 100%" [routerLink]="['/org']">Назад</button>
+    <button class="btn bg border big16" style="width: 100%" [routerLink]="['/org']">Назад</button>
   </div>
 </div>
