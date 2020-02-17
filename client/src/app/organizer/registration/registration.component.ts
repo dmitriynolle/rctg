@@ -6,10 +6,10 @@ import {ShtrafBall} from '../../data/shtraf';
 
 @Component({
   selector: 'app-org',
-  templateUrl: './org1.component.html',
-  styleUrls: ['./org1.component.scss']
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class Org1Component implements OnInit {
+export class RegistrationComponent implements OnInit {
 
   nameGames: Array<NameGames> = [];
   etap: Array<Etap> = [];
@@ -250,13 +250,24 @@ export class Org1Component implements OnInit {
       }
     }
     this.etap.push({
-      id: null, gameid: this.nameGames[this.nameGames.length - 1].id, nomeruser: this.userNumber, userid: this.nameUser[0].id,
-      factoruser: this.factor, su1: this.sunumber[0], su2: this.sunumber[1], su3: this.sunumber[2], su4: this.sunumber[3],
+      id: null,
+      gameid: this.nameGames[this.nameGames.length - 1].id,
+      nomeruser: this.userNumber,
+      userid: this.nameUser[0].id,
+      factoruser: this.factor,
+      su1: this.sunumber[0],
+      su2: this.sunumber[1],
+      su3: this.sunumber[2],
+      su4: this.sunumber[3],
       su5: this.sunumber[4],
-      timeuser: null, summa: null
+      timesu1: null,
+      timesu2: null,
+      timesu3: null,
+      timesu4: null,
+      timesu5: null
     });
     console.log(this.etap);
-    this.repository.saveEtap(this.etap[0]);
+    this.repository.saveEtap(this.etap[0]).subscribe();
     this.addEditNameGames = 0;
     this.etap.length = 0;
     this.sunumber.length = 0;

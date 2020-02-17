@@ -4,10 +4,10 @@ import {ShtrafBall} from '../../data/shtraf';
 
 @Component({
   selector: 'app-org3',
-  templateUrl: './org3.component.html',
-  styleUrls: ['./org3.component.scss']
+  templateUrl: './fines.component.html',
+  styleUrls: ['./fines.component.scss']
 })
-export class Org3Component implements OnInit {
+export class FinesComponent implements OnInit {
   shtrafBall: ShtrafBall[];
   name: string;
   ball: number;

@@ -1,0 +1,61 @@
+<div [hidden]="!popupVisible">
+  <div class="row">
+    <div class="col-2 my-2" [routerLink]="['/org']">
+      <img class="border bg p-2" src="../../../assets/close.png"/>
+    </div>
+    <div class="col-10 my-2">
+      <select class="border big p-2" [(ngModel)]="name"
+              (change)="getSelectNameGames()" name="game" id="1" style="width: 100%">
+        <option value="0">Выберите соревнование</option>
+        <option *ngFor="let item of gamesName" value="{{item.namegames}}">{{item.namegames}}</option>
+      </select>
+    </div>
+  </div>
+
+  <table style="width: 100%" class="big14">
+    <thead>
+    <tr style="border-bottom: solid 2px black">
+      <th>№</th>
+      <th>Номер</th>
+      <th class="p-2">ФИО</th>
+      <th>Баллы</th>
+      <th>Время</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of etap; let i = index" [class.light]="item.su1>9000"
+        (click)="allInfo(etap[i].gameid, etap[i].userid, i)">
+      <td>{{i + 1}}</td>
+      <td>{{item.nomeruser}}</td>
+      <td class="p-2">{{item.username}}</td>
+      <td>{{item.su1 + item.su2 + item.su3 + item.su4 + item.su5}}</td>
+      <td>{{time[i]}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngFor="let item of userEtapStata; index as i" [hidden]="popupVisible">
+  <div class="row" *ngIf="i==0">
+    <div class="col-10 py-2 big">{{item.nameetap}}</div>
+    <div class="col-2" (click)="popupVisible = true"><img class=" border p-2 bg" src="../../../assets/close.png"/></div>
+  </div>
+  <div class="row">
+    <div class="col-10 pt-2 big16" *ngIf="i==0">{{item.nameuser}}</div>
+    <div class="col-2 pt-2 big16"
+         *ngIf="i==0">{{etap[index].su1 + etap[index].su2 + etap[index].su3 + etap[index].su4 + etap[index].su5}}</div>
+  </div>
+  <div class="row" style="border-bottom: solid 1px black">
+    <div *ngIf="i==0||userEtapStata[i].nomersu!=userEtapStata[i-1].nomersu" class="col-8 mt-3">
+      СУ {{item.nomersu}}</div>
+    <div *ngIf="i==0||userEtapStata[i].nomersu!=userEtapStata[i-1].nomersu"
+         class="col-2 mt-3">{{timermath(userEtapStata[i].nomersu)}}</div>
+    <div *ngIf="i==0||userEtapStata[i].nomersu!=userEtapStata[i-1].nomersu"
+         class="col-2 mt-3">{{etap[index]["su" + userEtapStata[i].nomersu]}}</div>
+  </div>
+  <div class="row">
+    <div class="col-7">{{item.nameshtraf}}</div>
+    <div class="col-5">{{item.sum}}</div>
+  </div>
+</div>
+

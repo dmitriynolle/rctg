@@ -7,10 +7,10 @@ import {Etap, EtapView} from '../../data/registration';
 
 @Component({
   selector: 'app-su',
-  templateUrl: './su2.component.html',
-  styleUrls: ['./su2.component.scss']
+  templateUrl: './judge2.component.html',
+  styleUrls: ['./judge2.component.scss']
 })
-export class Su2Component implements OnInit {
+export class Judge2Component implements OnInit {
   private subscription: Subscription;
   private timer: Subscription;
   game: number;
@@ -117,40 +117,42 @@ export class Su2Component implements OnInit {
   }
 
   saveEtap() {
-    switch (this.su) {
-      // @ts-ignore
-      case '1': {
-        this.userEtap[0].su1 = this.allSumma;
-        break;
-      }
-      // @ts-ignore
-      case '2': {
-        this.userEtap[0].su2 = this.allSumma;
-        break;
-      }
-      // @ts-ignore
-      case '3': {
-        this.userEtap[0].su3 = this.allSumma;
-        break;
-      }
-      // @ts-ignore
-      case '4': {
-        this.userEtap[0].su4 = this.allSumma;
-        break;
-      }
-      // @ts-ignore
-      case '5': {
-        this.userEtap[0].su5 = this.allSumma;
-        break;
-      }
-    }
-    this.userEtap[0].summa = this.userEtap[0].su1 + this.userEtap[0].su2 + this.userEtap[0].su3
-      + this.userEtap[0].su4 + this.userEtap[0].su5;
+    // switch (this.su) {
+    //   // @ts-ignore
+    //   case '1': {
+    this.userEtap[0]['su' + this.su] = this.allSumma;
+    this.userEtap[0]['timesu' + this.su] = this.allSec;
+    //     break;
+    //   }
+    //   // @ts-ignore
+    //   case '2': {
+    //     this.userEtap[0].su2 = this.allSumma;
+    //     break;
+    //   }
+    //   // @ts-ignore
+    //   case '3': {
+    //     this.userEtap[0].su3 = this.allSumma;
+    //     break;
+    //   }
+    //   // @ts-ignore
+    //   case '4': {
+    //     this.userEtap[0].su4 = this.allSumma;
+    //     break;
+    //   }
+    //   // @ts-ignore
+    //   case '5': {
+    //     this.userEtap[0].su5 = this.allSumma;
+    //     break;
+    //   }
+    // }
+    // this.userEtap[0].summa = this.userEtap[0].su1 + this.userEtap[0].su2 + this.userEtap[0].su3
+    //   + this.userEtap[0].su4 + this.userEtap[0].su5;
     this.etap.push({
       id: this.userEtap[0].id, gameid: this.userEtap[0].gameid, userid: this.userEtap[0].userid,
       nomeruser: this.userEtap[0].nomeruser, factoruser: this.userEtap[0].factoruser, su1: this.userEtap[0].su1,
       su2: this.userEtap[0].su2, su3: this.userEtap[0].su3, su4: this.userEtap[0].su4, su5: this.userEtap[0].su5,
-      summa: this.userEtap[0].summa, timeuser: this.userEtap[0].timeuser + this.allSec
+      timesu1: this.userEtap[0].timesu1, timesu2: this.userEtap[0].timesu2, timesu3: this.userEtap[0].timesu3,
+      timesu4: this.userEtap[0].timesu4, timesu5: this.userEtap[0].timesu5
     });
     for (let i = 0; i < this.nameGamesOpis.length; i++) {
       if (this.nameGamesOpis[i].ball != 0) {

@@ -10,8 +10,11 @@ export class Etap {
     public su3: number,
     public su4: number,
     public su5: number,
-    public timeuser: number,
-    public summa: number
+    public timesu1: number,
+    public timesu2: number,
+    public timesu3: number,
+    public timesu4: number,
+    public timesu5: number
   ) {
   }
 }
@@ -30,8 +33,11 @@ export class EtapView {
     public su3: number,
     public su4: number,
     public su5: number,
-    public timeuser: number,
-    public summa: number
+    public timesu1: number,
+    public timesu2: number,
+    public timesu3: number,
+    public timesu4: number,
+    public timesu5: number
   ) {
   }
 }

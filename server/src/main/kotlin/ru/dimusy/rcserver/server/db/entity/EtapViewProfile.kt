@@ -18,6 +18,9 @@ class etapview (
         val su3: Int,
         val su4: Int,
         val su5: Int,
-        val timeuser: Int,
-        val summa: Int
+        val timesu1: Int,
+        val timesu2: Int,
+        val timesu3: Int,
+        val timesu4: Int,
+        val timesu5: Int
 )

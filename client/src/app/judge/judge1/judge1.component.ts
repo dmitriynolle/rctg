@@ -7,11 +7,11 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './su1.component.html',
-  styleUrls: ['./su1.component.scss']
+  templateUrl: './judge1.component.html',
+  styleUrls: ['./judge1.component.scss']
 })
 
-export class Su1Component implements OnInit {
+export class Judge1Component implements OnInit {
   private subscription: Subscription;
   gameId = 0;
   userName = "0";
