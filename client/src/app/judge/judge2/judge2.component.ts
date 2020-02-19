@@ -145,14 +145,15 @@ export class Judge2Component implements OnInit {
     //     break;
     //   }
     // }
-    // this.userEtap[0].summa = this.userEtap[0].su1 + this.userEtap[0].su2 + this.userEtap[0].su3
-    //   + this.userEtap[0].su4 + this.userEtap[0].su5;
-    this.etap.push({
+    this.userEtap[0].summa = this.userEtap[0].su1 + this.userEtap[0].su2 + this.userEtap[0].su3
+       + this.userEtap[0].su4 + this.userEtap[0].su5;
+    this.userEtap[0].time = this.userEtap[0].timesu1 + this.userEtap[0].timesu2 + this.userEtap[0].timesu3 + this.userEtap[0].timesu4 + this.userEtap[0].timesu5;
+       this.etap.push({
       id: this.userEtap[0].id, gameid: this.userEtap[0].gameid, userid: this.userEtap[0].userid,
       nomeruser: this.userEtap[0].nomeruser, factoruser: this.userEtap[0].factoruser, su1: this.userEtap[0].su1,
       su2: this.userEtap[0].su2, su3: this.userEtap[0].su3, su4: this.userEtap[0].su4, su5: this.userEtap[0].su5,
       timesu1: this.userEtap[0].timesu1, timesu2: this.userEtap[0].timesu2, timesu3: this.userEtap[0].timesu3,
-      timesu4: this.userEtap[0].timesu4, timesu5: this.userEtap[0].timesu5
+      timesu4: this.userEtap[0].timesu4, timesu5: this.userEtap[0].timesu5, time: this.userEtap[0].time, summa: this.userEtap[0].summa
     });
     for (let i = 0; i < this.nameGamesOpis.length; i++) {
       if (this.nameGamesOpis[i].ball != 0) {

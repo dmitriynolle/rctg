@@ -264,9 +264,11 @@ export class RegistrationComponent implements OnInit {
       timesu2: null,
       timesu3: null,
       timesu4: null,
-      timesu5: null
+      timesu5: null,
+      time: null,
+      summa: 10000 * this.nameGames[0].su
     });
-    console.log(this.etap);
+    console.log(this.etap[0]);
     this.repository.saveEtap(this.etap[0]).subscribe();
     this.addEditNameGames = 0;
     this.etap.length = 0;

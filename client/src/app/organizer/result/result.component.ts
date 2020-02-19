@@ -3,7 +3,7 @@ import {NameGames} from '../../data/user.model';
 import {Repository} from '../../data/repository';
 import {EtapView} from '../../data/registration';
 import {sortBy} from 'sort-by-typescript';
-import {UserEtapStata} from "../../data/shtraf";
+import {UserEtapStata} from '../../data/shtraf';
 
 @Component({
   selector: 'app-org2',
@@ -44,8 +44,9 @@ export class ResultComponent implements OnInit {
         } else {
           this.time[i] = Math.trunc(this.timer / 60) + ' : ' + this.timer % 60;
         }
+        this.etap[i].time = this.time[i];
       }
-      this.etap = this.etap.sort(sortBy('timeuser'));
+      this.etap = this.etap.sort(sortBy('time'));
       this.etap = this.etap.sort(sortBy('summa'));
     });
   }

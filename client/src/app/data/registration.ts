@@ -14,7 +14,9 @@ export class Etap {
     public timesu2: number,
     public timesu3: number,
     public timesu4: number,
-    public timesu5: number
+    public timesu5: number,
+    public time: number,
+    public summa: number
   ) {
   }
 }
@@ -37,7 +39,9 @@ export class EtapView {
     public timesu2: number,
     public timesu3: number,
     public timesu4: number,
-    public timesu5: number
+    public timesu5: number,
+    public time: number,
+    public summa: number
   ) {
   }
 }
