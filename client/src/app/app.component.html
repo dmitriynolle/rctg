@@ -1,3 +1,25 @@
 <body class="m-4">
-  <router-outlet></router-outlet>
+<nav class="navbar navbar-expand bg border">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto big14" style="color: black">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" [routerLink]="['']">Главная<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Результаты
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" [routerLink]="['org2']">Результаты</a>
+          <a class="dropdown-item" href="#" [routerLink]="['ratingNN']">Рейтинг НН</a>
+          <a class="dropdown-item" href="#" [routerLink]="['ratingGlobal']">Рейтинг глобальный</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['password']">Соревнования</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet class="my-3"></router-outlet>
 </body>

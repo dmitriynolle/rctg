@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Repository} from "../data/repository";
-import {Router} from "@angular/router";
+import {Repository} from '../data/repository';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss']
+  templateUrl: './password.component.html',
+  styleUrls: ['./password.component.scss']
 })
-export class IndexComponent implements OnInit {
+export class PasswordComponent implements OnInit {
   password: any;
   private secret: { password: string };
   path = true;
@@ -23,7 +23,7 @@ export class IndexComponent implements OnInit {
 
   enter() {
     if (this.password == this.secret.password) {
-      this.router.navigate(["main"]);
+      this.router.navigate(['mainmenu']);
     } else {
       this.password = '';
     }

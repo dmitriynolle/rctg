@@ -1,39 +1,41 @@
-<table style="width: 100%; font-size: 16pt">
-  <thead>
-  <tr style="border-bottom: solid 2px black">
-    <th>№</th>
-    <th class="p-2">Наименование</th>
-    <th>Баллы</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let item of shtrafBall" (click)="name = item.shtrafname;
+<div class="my-3">
+  <table style="width: 100%; font-size: 16pt">
+    <thead>
+    <tr style="border-bottom: solid 2px black">
+      <th>№</th>
+      <th class="p-2">Наименование</th>
+      <th>Баллы</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of shtrafBall" (click)="name = item.shtrafname;
                                                ball = item.shtrafball;
                                                id = item.id">
-    <td>{{item.id}}</td>
-    <td class="p-2">{{item.shtrafname}}</td>
-    <td>{{item.shtrafball}}</td>
-  </tr>
-  </tbody>
-</table>
-<div class="row my-4">
-  <div class="col-9"><input class="form-control big16" type="text" [(ngModel)]="name"></div>
-  <div class="col-3"><input class="form-control big16" type="text" [(ngModel)]="ball"></div>
-</div>
-<div class="row my-2">
-  <div class="col-6">
-    <button class="btn border bg big16" style="width: 100%" (click)="save()"
-            [disabled]="!ball && !name">Сохранить
-    </button>
+      <td>{{item.id}}</td>
+      <td class="p-2">{{item.shtrafname}}</td>
+      <td>{{item.shtrafball}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row my-4">
+    <div class="col-9"><input class="form-control big16" type="text" [(ngModel)]="name"></div>
+    <div class="col-3"><input class="form-control big16" type="text" [(ngModel)]="ball"></div>
   </div>
-  <div class="col-6">
-    <button class="btn border bg big16" style="width: 100%" (click)="cancel()"
-            [disabled]="!ball && !name">Отмена
-    </button>
+  <div class="row my-2">
+    <div class="col-6">
+      <button class="btn border bg big16" style="width: 100%" (click)="save()"
+              [disabled]="!ball && !name">Сохранить
+      </button>
+    </div>
+    <div class="col-6">
+      <button class="btn border bg big16" style="width: 100%" (click)="cancel()"
+              [disabled]="!ball && !name">Отмена
+      </button>
+    </div>
   </div>
-</div>
-<div class="row my-2">
-  <div class="col-12">
-    <button class="btn bg border big16" style="width: 100%" [routerLink]="['/org']">Назад</button>
+  <div class="row my-2">
+    <div class="col-12">
+      <button class="btn bg border big16" style="width: 100%" [routerLink]="['/org']">Назад</button>
+    </div>
   </div>
 </div>

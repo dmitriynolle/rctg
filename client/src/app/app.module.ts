@@ -7,11 +7,14 @@ import {Judge2Component} from './judge/judge2/judge2.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {RegistrationComponent} from './organizer/registration/registration.component';
-import {MainComponent} from './main/main.component';
-import {ResultComponent} from './organizer/result/result.component';
+import {MainmenuComponent} from './organizer/mainmenu/mainmenu.component';
+import {ResultComponent} from './rating/result/result.component';
 import {OrganizerComponent} from './organizer/organizer.component';
 import {FinesComponent} from './organizer/fines/fines.component';
-import {IndexComponent} from './index/index.component';
+import {PasswordComponent} from './password/password.component';
+import { RatingNNComponent } from './rating/rating-nn/rating-nn.component';
+import { MainComponent } from './main/main.component';
+import { RatingGlobalComponent } from './rating/rating-global/rating-global.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,14 @@ import {IndexComponent} from './index/index.component';
     Judge1Component,
     Judge2Component,
     RegistrationComponent,
-    MainComponent,
+    MainmenuComponent,
     ResultComponent,
     OrganizerComponent,
     FinesComponent,
-    IndexComponent
+    PasswordComponent,
+    RatingNNComponent,
+    MainComponent,
+    RatingGlobalComponent
   ],
   imports: [
     BrowserModule,

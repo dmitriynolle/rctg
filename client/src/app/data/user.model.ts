@@ -6,6 +6,7 @@ export class UserModel {
     public factor: number) {
   }
 }
+
 export class NameGames {
   constructor(
     public id: number,
@@ -13,5 +14,18 @@ export class NameGames {
     public priznak: number,
     public shtrafid: number,
     public su: number) {
+  }
+}
+
+export class RatingNN {
+  constructor(
+    public divisionUser: string,
+    public changeRating: number,
+    public numberOfCompetitions: number,
+    public rating: number,
+    public nomer: number,
+    public user: string,
+    public userID: string,
+    public locality: string) {
   }
 }

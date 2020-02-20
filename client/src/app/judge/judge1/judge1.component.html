@@ -1,41 +1,39 @@
-<body>
+<div class="my-3">
+  <select class="border big my-3 p-2" id="selectGame" [(ngModel)]="gameId" (change)="changeGame()" style="width: 100%">
+    <option value="0">Выберите этап</option>
+    <option *ngFor="let item of nameGames" value="{{item.id}}">{{item.namegames}}</option>
+  </select>
 
-<select class="border big my-3 p-2" id="selectGame" [(ngModel)]="gameId" (change)="changeGame()" style="width: 100%">
-  <option value="0">Выберите этап</option>
-  <option *ngFor="let item of nameGames" value="{{item.id}}">{{item.namegames}}</option>
-</select>
+  <button *ngFor="let item of fakeArray; index as i" class="border btn p-2 big" [style.width]="test"
+          [class.bg]="getSelectSu(i+1)" [class.border]="getSelectSu(i+1)"
+          (click)="su=i+1" [disabled]="fakeArray[i] != 10000">СУ {{i + 1}}
+    <span *ngIf="fakeArray[i] != 10000 && fakeArray[i] > 1" style="font-size: large"> ({{fakeArray[i]}})</span>
+  </button>
 
-<button *ngFor="let item of fakeArray; index as i" class="border btn p-2 big" [style.width]="test"
-        [class.bg]="getSelectSu(i+1)" [class.border]="getSelectSu(i+1)"
-        (click)="su=i+1" [disabled]="fakeArray[i] != 10000">СУ {{i + 1}}
-  <span *ngIf="fakeArray[i] != 10000 && fakeArray[i] > 1" style="font-size: large"> ({{fakeArray[i]}})</span>
-</button>
-
-<div class="row my-3">
-  <div class="col-2">
-    <input type="text" class="border big16 p-2" style="width: 60px; text-align: center" [(ngModel)]="number"
-           (change)="changeNumber()">
+  <div class="row my-3">
+    <div class="col-2">
+      <input type="text" class="border big16 p-2" style="width: 60px; text-align: center" [(ngModel)]="number"
+             (change)="changeNumber()">
+    </div>
+    <div class="col-10">
+      <select class="border big p-2" id="selectUser" [(ngModel)]="userName" (change)="changeUser()"
+              style="width: 100%">
+        <option value="0">Выберите участника</option>
+        <option *ngFor="let item of nameUsers" value="{{item.username}}">{{item.username}}</option>
+      </select>
+    </div>
   </div>
-  <div class="col-10">
-    <select class="border big p-2" id="selectUser" [(ngModel)]="userName" (change)="changeUser()"
-            style="width: 100%">
-      <option value="0">Выберите участника</option>
-      <option *ngFor="let item of nameUsers" value="{{item.username}}">{{item.username}}</option>
-    </select>
+
+  <span *ngFor="let i of [1, 2, 6]" class="btn p-2 big" style="width: 33%; text-align: center"
+        [class.bg]="selectFactor(i)" [class.border]="selectFactor(i)">X {{i}}</span>
+
+  <div class="row">
+    <div class="col-2 my-3" [routerLink]="['/mainmenu']"><img class="border bg p-2" src="../../../assets/close.png"/></div>
+    <div class="col-10">
+      <button class="border btn bg big my-3" type="button" style="width: 100%"
+              [disabled]="su == 0 || factor == 0 || gameId == 0 || userName == '0'"
+              [routerLink]="['/su2', gameId, userId, su]">СТАРТ
+      </button>
+    </div>
   </div>
 </div>
-
-<span *ngFor="let i of [1, 2, 6]" class="btn p-2 big" style="width: 33%; text-align: center"
-      [class.bg]="selectFactor(i)" [class.border]="selectFactor(i)">X {{i}}</span>
-
-<div class="row">
-  <div class="col-2 my-3" [routerLink]="['/main']"><img class="border bg p-2" src="../../../assets/close.png"/></div>
-  <div class="col-10">
-    <button class="border btn bg big my-3" type="button" style="width: 100%"
-            [disabled]="su == 0 || factor == 0 || gameId == 0 || userName == '0'"
-            [routerLink]="['/su2', gameId, userId, su]">СТАРТ
-    </button>
-  </div>
-</div>
-
-</body>

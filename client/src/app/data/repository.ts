@@ -16,6 +16,14 @@ export class Repository {
     return this.http.get('assets/secret.json');
   }
 
+  getRatingNN() {
+    return this.http.get('assets/ReytingRCTG_Nizniy_Novgorod.json');
+  }
+
+  getRatingGlobal() {
+    return this.http.get('assets/ReytingGlobalnaya_liga.json');
+  }
+
   getUsers() {
     return this.http.get(this.path + 'users');
   }

@@ -11,7 +11,7 @@ import {UserEtapStata} from '../../data/shtraf';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  name: string;
+  name = '0';
   gamesName: Array<NameGames> = [];
   gameName: Array<NameGames> = [];
   userEtapStata: Array<UserEtapStata> = [];
