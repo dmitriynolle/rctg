@@ -34,18 +34,18 @@
   </div>
 
   <div class="row" *ngFor="let item of nameGamesOpis; let i = index">
-    <div class="border my-1" *ngIf="item.shtrafid != 7" style="width: 100%">
+    <div class="border my-1" *ngIf="item.shtrafid != 1 && item.shtrafid != 2" style="width: 100%">
       <button class="col-10 p-2 bg btn-r btn big16"
-              style="text-align: center" [disabled]="item.shtrafid != 5 && item.shtrafid != 9 && bg[0] || allSec == 0"
-              (click)="increment(i)">{{item.shtrafname}} <span class="badge badge-danger">{{item.ball}}</span>
+              style="text-align: center" [disabled]="item.shtrafid != 7 && item.shtrafid != 10 && bg[0] || allSec == 0"
+              (click)="increment(i)">{{item.shtrafname}} <span class="badge badge-danger">{{ball[i]}}</span>
         <span style="font-size: large"> ({{item.shtrafball}})</span>
       </button>
-      <button *ngIf="nameGamesOpis[i].ball > 0" class="col-2 p-2 btn-l btn big16"
+      <button *ngIf="ball[i] > 0" class="col-2 p-2 btn-l btn big16"
               style="text-align: center; background-color: red" (click)="decrement(i)"
-              [disabled]="item.shtrafid != 5 && item.shtrafid != 9 && bg[0] || allSec == 0">-
+              [disabled]="item.shtrafid != 8 && item.shtrafid != 11 && bg[0] || allSec == 0">-
       </button>
-      <button *ngIf="nameGamesOpis[i].ball == 0" class="col-2 p-2 bg btn-l btn big16"
-              style="text-align: center" [disabled]="item.shtrafid != 5 && item.shtrafid != 9 && bg[0] || allSec == 0">
+      <button *ngIf="ball[i] == 0" class="col-2 p-2 bg btn-l btn big16"
+              style="text-align: center" [disabled]="item.shtrafid != 7 && item.shtrafid != 10 && bg[0] || allSec == 0">
         :)
       </button>
     </div>

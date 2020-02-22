@@ -11,5 +11,6 @@ class namegamesview(
         val namegames: String,
         val shtrafid: Int,
         val shtrafname: String,
-        val shtrafball: Int
+        val shtrafball: Int,
+        val ball: Int
 )

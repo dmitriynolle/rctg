@@ -13,7 +13,8 @@ export class NameGames {
     public namegames: string,
     public priznak: number,
     public shtrafid: number,
-    public su: number) {
+    public su: number,
+    public ball: number) {
   }
 }
 

@@ -28,6 +28,7 @@ export class Judge2Component implements OnInit {
   etap: Array<Etap> = [];
   popupwindow: boolean = true;
   popuptext: string;
+  ball: Array<number> = [];
 
   constructor(private activateRoute: ActivatedRoute, private repository: Repository, private router: Router) {
     this.subscription = activateRoute.params.subscribe(data => {
@@ -43,7 +44,7 @@ export class Judge2Component implements OnInit {
       this.repository.getNameGame(this.userEtap[0].namegames).subscribe((rec: any[]) => {
         this.nameGamesOpis = rec;
         for (let i = 0; i < this.nameGamesOpis.length; i++) {
-          this.nameGamesOpis[i].ball = 0;
+          this.ball[i] = 0;
         }
         console.log(this.nameGamesOpis);
       });
@@ -59,14 +60,14 @@ export class Judge2Component implements OnInit {
           this.sec = 0;
           this.min++;
         }
-        if (this.min >= 5) {
+        if (this.min >= this.nameGamesOpis[0].ball) {
           this.bg[2] = true;
           this.bg[0] = false;
         } else {
           this.bg[1] = true;
           this.bg[0] = false;
         }
-        if (this.min == 10) {
+        if (this.min == this.nameGamesOpis[0].ball + this.nameGamesOpis[1].ball) {
           this.stopTimer();
         }
       });
@@ -87,17 +88,25 @@ export class Judge2Component implements OnInit {
 
   stopSchet() {
     for (let i = 0; i < this.nameGamesOpis.length; i++) {
-      if (this.nameGamesOpis[i].shtrafid == 1) {
-        this.summa[i] = this.nameGamesOpis[i].ball * this.nameGamesOpis[i].shtrafball * this.userEtap[0].factoruser;
+      if (this.nameGamesOpis[i].shtrafid > 2 && this.nameGamesOpis[i].ball == 1) {
+        this.summa[i] = this.ball[i] * this.nameGamesOpis[i].shtrafball * this.userEtap[0].factoruser;
       } else {
-        if (this.nameGamesOpis[i].shtrafid == 7) {
-          if (this.min - 5 > 0) {
-            this.summa[i] = (this.min - 5) * this.nameGamesOpis[i].shtrafball;
+        if (this.nameGamesOpis[i].shtrafid == 2) {
+          if (this.min - this.nameGamesOpis[0].ball > 0) {
+            this.summa[i] = (this.min - this.nameGamesOpis[0].ball) * this.nameGamesOpis[i].shtrafball;
           } else {
-            this.summa[i] = this.nameGamesOpis[i].ball * this.nameGamesOpis[i].shtrafball;
+            this.summa[i] = 0 * this.nameGamesOpis[i].shtrafball;
           }
         } else {
-          this.summa[i] = this.nameGamesOpis[i].ball * this.nameGamesOpis[i].shtrafball;
+          if (this.nameGamesOpis[i].shtrafid > 2 && this.nameGamesOpis[i].ball > 1) {
+            if (this.ball[i] > this.nameGamesOpis[i].ball) {
+              this.summa[i] = (this.ball[i] - this.nameGamesOpis[i].ball) * this.nameGamesOpis[i].shtrafball;
+            } else {
+              this.summa[i] = 0;
+            }
+          } else {
+            this.summa[i] = this.ball[i] * this.nameGamesOpis[i].shtrafball;
+          }
         }
       }
     }
@@ -107,65 +116,54 @@ export class Judge2Component implements OnInit {
   }
 
   increment(id: number) {
-    this.nameGamesOpis[id].ball++;
+    this.ball[id]++;
     this.stopSchet();
   }
 
   decrement(id: number) {
-    this.nameGamesOpis[id].ball--;
+    this.ball[id]--;
     this.stopSchet();
   }
 
   saveEtap() {
-    // switch (this.su) {
-    //   // @ts-ignore
-    //   case '1': {
     this.userEtap[0]['su' + this.su] = this.allSumma;
     this.userEtap[0]['timesu' + this.su] = this.allSec;
-    //     break;
-    //   }
-    //   // @ts-ignore
-    //   case '2': {
-    //     this.userEtap[0].su2 = this.allSumma;
-    //     break;
-    //   }
-    //   // @ts-ignore
-    //   case '3': {
-    //     this.userEtap[0].su3 = this.allSumma;
-    //     break;
-    //   }
-    //   // @ts-ignore
-    //   case '4': {
-    //     this.userEtap[0].su4 = this.allSumma;
-    //     break;
-    //   }
-    //   // @ts-ignore
-    //   case '5': {
-    //     this.userEtap[0].su5 = this.allSumma;
-    //     break;
-    //   }
-    // }
     this.userEtap[0].summa = this.userEtap[0].su1 + this.userEtap[0].su2 + this.userEtap[0].su3
-       + this.userEtap[0].su4 + this.userEtap[0].su5;
-    this.userEtap[0].time = this.userEtap[0].timesu1 + this.userEtap[0].timesu2 + this.userEtap[0].timesu3 + this.userEtap[0].timesu4 + this.userEtap[0].timesu5;
-       this.etap.push({
-      id: this.userEtap[0].id, gameid: this.userEtap[0].gameid, userid: this.userEtap[0].userid,
-      nomeruser: this.userEtap[0].nomeruser, factoruser: this.userEtap[0].factoruser, su1: this.userEtap[0].su1,
-      su2: this.userEtap[0].su2, su3: this.userEtap[0].su3, su4: this.userEtap[0].su4, su5: this.userEtap[0].su5,
-      timesu1: this.userEtap[0].timesu1, timesu2: this.userEtap[0].timesu2, timesu3: this.userEtap[0].timesu3,
-      timesu4: this.userEtap[0].timesu4, timesu5: this.userEtap[0].timesu5, time: this.userEtap[0].time, summa: this.userEtap[0].summa
+      + this.userEtap[0].su4 + this.userEtap[0].su5;
+    this.userEtap[0].time = this.userEtap[0].timesu1 + this.userEtap[0].timesu2 + this.userEtap[0].timesu3
+      + this.userEtap[0].timesu4 + this.userEtap[0].timesu5;
+    this.etap.push({
+      id: this.userEtap[0].id,
+      gameid: this.userEtap[0].gameid,
+      userid: this.userEtap[0].userid,
+      nomeruser: this.userEtap[0].nomeruser,
+      factoruser: this.userEtap[0].factoruser,
+      su1: this.userEtap[0].su1,
+      su2: this.userEtap[0].su2,
+      su3: this.userEtap[0].su3,
+      su4: this.userEtap[0].su4,
+      su5: this.userEtap[0].su5,
+      timesu1: this.userEtap[0].timesu1,
+      timesu2: this.userEtap[0].timesu2,
+      timesu3: this.userEtap[0].timesu3,
+      timesu4: this.userEtap[0].timesu4,
+      timesu5: this.userEtap[0].timesu5,
+      time: this.userEtap[0].time,
+      summa: this.userEtap[0].summa
     });
     for (let i = 0; i < this.nameGamesOpis.length; i++) {
-      if (this.nameGamesOpis[i].ball != 0) {
-        this.userEtapStata.push({
-          nomeretap: this.userEtap[0].gameid,
-          nameetap: this.userEtap[0].namegames,
-          nomersu: this.su,
-          nomeruser: this.userEtap[0].userid,
-          nameuser: this.userEtap[0].username,
-          nameshtraf: this.nameGamesOpis[i].shtrafname,
-          sum: this.nameGamesOpis[i].ball
-        });
+      if (this.nameGamesOpis[i].id != 1 && this.nameGamesOpis[i].id != 2) {
+        if (this.ball[i] != 0) {
+          this.userEtapStata.push({
+            nomeretap: this.userEtap[0].gameid,
+            nameetap: this.userEtap[0].namegames,
+            nomersu: this.su,
+            nomeruser: this.userEtap[0].userid,
+            nameuser: this.userEtap[0].username,
+            nameshtraf: this.nameGamesOpis[i].shtrafname,
+            sum: this.ball[i]
+          });
+        }
       }
     }
     console.log(this.userEtapStata);

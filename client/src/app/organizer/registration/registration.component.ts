@@ -30,6 +30,7 @@ export class RegistrationComponent implements OnInit {
   users: Array<UserModel> = [];
   games: Array<NameGames> = [];
   userRegistred = 0;
+  eball: Array<number> = [];
 
   constructor(private repository: Repository) {
   }
@@ -54,18 +55,23 @@ export class RegistrationComponent implements OnInit {
     this.su = 0;
     this.nameGames.length = 0;
     for (let i = this.shtrafBall[0].id; i < this.shtrafBall[0].id + this.shtrafBall.length; i++) {
-      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i, su: null});
+      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i, su: null, ball: 0});
     }
-    console.log(this.nameGames);
+//    console.log(this.nameGames);
   }
 
   setAddSaveGames() {
     this.visibleNameGames = 1;
     for (let i = 0; i < this.shtrafBall.length; i++) {
+      {
+        this.nameGames[i].ball = this.eball[i];
+      }
+      this.nameGames[0].priznak = 1;
       this.nameGames[i].namegames = this.gamesName;
-      this.nameGames[i].su = this.su;
+      this.nameGames[i].su = this.shtrafBall[i].shtrafball;
     }
-    this.nameGames.push({id: null, namegames: this.gamesName, priznak: 2, shtrafid: null, su: this.su});
+    this.nameGames.push({id: null, namegames: this.gamesName, priznak: 2, shtrafid: null, su: this.su, ball: null});
+    console.log (this.nameGames);
     this.repository.saveNameGames(this.nameGames).subscribe((saveNameGames: NameGames) => {
       this.repository.getNameGames(2).subscribe((res: any[]) => {
         this.games = res;
@@ -78,8 +84,12 @@ export class RegistrationComponent implements OnInit {
     this.visibleNameGames = 1;
     this.addEditNameGames = 1;
     for (let i = 0; i < this.nameGames.length; i++) {
+      {
+        this.nameGames[i].ball = this.eball[i];
+      }
+      this.nameGames[0].priznak = 1;
       this.nameGames[i].namegames = this.gamesName;
-      this.nameGames[i].su = this.su;
+      this.nameGames[i].su = this.shtrafBall[i].shtrafball;
     }
     this.repository.saveNameGames(this.nameGames).subscribe((saveNameGames: NameGames) => {
       this.repository.getNameGames(2).subscribe((res: any[]) => {
@@ -151,7 +161,8 @@ export class RegistrationComponent implements OnInit {
         namegames: this.gamesName,
         priznak: 1,
         shtrafid: sid,
-        su: this.su
+        su: this.su,
+        ball: null
       });
     } else {
       this.ball[id] = false;
@@ -160,10 +171,11 @@ export class RegistrationComponent implements OnInit {
         namegames: this.gamesName,
         priznak: 0,
         shtrafid: sid,
-        su: this.su
+        su: this.su,
+        ball: null
       });
     }
-    console.log(this.nameGames);
+//    console.log(this.nameGames);
   }
 
   getSelectNameGames() {
@@ -187,7 +199,7 @@ export class RegistrationComponent implements OnInit {
             this.addEditNameGames = 0;
           }
         });
-        console.log(this.nameGames);
+//        console.log(this.nameGames);
       });
     }
   }
@@ -243,7 +255,7 @@ export class RegistrationComponent implements OnInit {
 
   saveEtap() {
     for (let i = 0; i < 5; i++) {
-      if (i <= this.nameGames[0].su - 1) {
+      if (i <= this.nameGames[this.nameGames.length - 1].su - 1) {
         this.sunumber[i] = 10000;
       } else {
         this.sunumber[i] = 0;
@@ -266,7 +278,7 @@ export class RegistrationComponent implements OnInit {
       timesu4: null,
       timesu5: null,
       time: null,
-      summa: 10000 * this.nameGames[0].su
+      summa: 10000 * this.nameGames[this.nameGames.length - 1].su
     });
     console.log(this.etap[0]);
     this.repository.saveEtap(this.etap[0]).subscribe();

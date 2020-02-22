@@ -10,5 +10,6 @@ class namegames (
         val namegames: String,
         val priznak: Int,
         val shtrafid: Int,
-        val su: Int
+        val su: Int,
+        val ball: Int
 )

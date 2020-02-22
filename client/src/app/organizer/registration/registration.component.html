@@ -30,14 +30,17 @@
             (click)="su = item">{{item}}</span>
       </div>
       <span>Выберите варианты пенализации</span>
-      <div *ngFor="let item of shtrafBall let i = index" class="row py-2 my-1" [class.bg]="ball[i]"
-           [class.border]="ball[i]"
+      <div *ngFor="let item of shtrafBall let i = index" [class.bg]="ball[i]"
+           [class.border]="ball[i]"  class="row py-2"
            (click)="getSelectBall(i, item.id)" style="width: 100%">
-        <span class="col-1">{{i + 1}}</span>
-        <span class="col-9">{{item.shtrafname}}</span>
-        <span class="col-2">{{item.shtrafball}}</span>
+        <div>
+          <span class="col-1" style="text-align: center">{{i + 1}}</span>
+          <span class="col-7">{{item.shtrafname}}</span>
+          <span class="col-2" style="text-align: center">{{item.shtrafball}}</span>
+          <input class="col-2" [(ngModel)]="eball[i]">
+        </div>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <button [disabled]="!gamesName || su == 0" *ngIf="addEditNameGames == 0 && visibleNameGames == 0"
                 class="col-5 border btn bg py-2" (click)="setAddSaveGames()">
           <img src="../../../assets/diskette.png">
