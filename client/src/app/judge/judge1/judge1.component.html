@@ -1,9 +1,10 @@
-<div class="my-3">
-  <select class="border big my-3 p-2" id="selectGame" [(ngModel)]="gameId" (change)="changeGame()" style="width: 100%">
+<div class="m-4">
+  <div class="row my-3">
+  <select class=" col-12 border big p-2" id="selectGame" [(ngModel)]="gameId" (change)="changeGame()" style="width: 100%">
     <option value="0">Выберите этап</option>
     <option *ngFor="let item of nameGames" value="{{item.id}}">{{item.namegames}}</option>
   </select>
-
+  </div>
   <button *ngFor="let item of fakeArray; index as i" class="border btn p-2 big" [style.width]="test"
           [class.bg]="getSelectSu(i+1)" [class.border]="getSelectSu(i+1)"
           (click)="su=i+1" [disabled]="fakeArray[i] != 10000">СУ {{i + 1}}
@@ -11,29 +12,23 @@
   </button>
 
   <div class="row my-3">
-    <div class="col-2">
-      <input type="text" class="border big16 p-2" style="width: 60px; text-align: center" [(ngModel)]="number"
-             (change)="changeNumber()">
-    </div>
-    <div class="col-10">
-      <select class="border big p-2" id="selectUser" [(ngModel)]="userName" (change)="changeUser()"
-              style="width: 100%">
+      <input  class="col-2 border big16 p-2" type="text" style="text-align: center" [(ngModel)]="number" (change)="changeNumber()">
+      <select class="col-10 border big p-2" [(ngModel)]="userName" (change)="changeUser()" style="width: 100%">
         <option value="0">Выберите участника</option>
         <option *ngFor="let item of nameUsers" value="{{item.username}}">{{item.username}}</option>
       </select>
-    </div>
   </div>
 
   <span *ngFor="let i of [1, 2, 6]" class="btn p-2 big" style="width: 33%; text-align: center"
         [class.bg]="selectFactor(i)" [class.border]="selectFactor(i)">X {{i}}</span>
 
-  <div class="row">
-    <div class="col-2 my-3" [routerLink]="['/mainmenu']"><img class="border bg p-2" src="../../../assets/close.png"/></div>
-    <div class="col-10">
-      <button class="border btn bg big my-3" type="button" style="width: 100%"
+  <div class="row my-3" style="text-align: center">
+    <div class="col-2 py-3 bg border" [routerLink]="['/mainmenu']"><img src="../../../assets/close.png"/></div>
+
+      <button class="col-10 border bg big py-3" type="button"
               [disabled]="su == 0 || factor == 0 || gameId == 0 || userName == '0'"
               [routerLink]="['/su2', gameId, userId, su]">СТАРТ
       </button>
-    </div>
+
   </div>
 </div>

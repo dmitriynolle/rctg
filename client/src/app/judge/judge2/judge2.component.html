@@ -1,4 +1,4 @@
-<div class="my-3">
+<div class="m-4">
   <div *ngFor="let item of userEtap">
     <div class="row big">
       <div class="col-10">
@@ -51,14 +51,11 @@
     </div>
   </div>
 
-  <div class="row my-2">
-    <button [disabled]="bg[1]" class="col-2 border btn bg py-3" [routerLink]="['/su1', game]"><img
+  <div class="row my-2" style="text-align: center">
+    <button [disabled]="bg[1]" class="col-2 border bg py-3" [routerLink]="['/su1', game]"><img
       src="../../../assets/close.png"/></button>
-    <span class="col-1"></span>
-    <button [disabled]="bg[1] || allSec == 0 || !popupwindow" class="border btn big bg py-3 col-9"
-            style="text-align: center"
-            (click)="saveEtap()">Записать
-    </button>
+    <button [disabled]="bg[1] || allSec == 0 || !popupwindow" class="border big bg py-3 col-10"
+            (click)="saveEtap()">Записать</button>
   </div>
 
   <div [hidden]="popupwindow" class="border big popup" (click)="popupwindow = true">{{popuptext}}</div>

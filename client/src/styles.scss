@@ -4,7 +4,7 @@ a {
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
-  background: #f7f7f7;
+  //background: #f7f7f7;
 }
 
 .center {
@@ -50,6 +50,10 @@ body {
 
 .bg{
   background: #ffbb44;
+}
+
+.bg:disabled{
+  background: rgb(255, 220, 153);
 }
 
 select {

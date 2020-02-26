@@ -1,25 +1,17 @@
-<body class="m-4">
-<nav class="navbar navbar-expand bg border">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto big14" style="color: black">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" [routerLink]="['']">Главная<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Результаты
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" [routerLink]="['org2']">Результаты</a>
-          <a class="dropdown-item" href="#" [routerLink]="['ratingNN']">Рейтинг НН</a>
-          <a class="dropdown-item" href="#" [routerLink]="['ratingGlobal']">Рейтинг глобальный</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['password']">Соревнования</a>
-      </li>
-    </ul>
+<body>
+<nav class="navbar-expand bg py-2">
+  <div class="navbar-collapse big16">
+    <div class="ml-3 p-1" [routerLink]="['']">Главная</div>
+    <div class="nav-item dropdown">
+      <div class="p-1" data-toggle="dropdown" aria-haspopup="true">Результаты</div>
+      <div class="dropdown-menu">
+        <div class="dropdown-item" href="#" [routerLink]="['org2']">Результаты</div>
+        <div class="dropdown-item" href="#" [routerLink]="['ratingNN']">Рейтинг НН</div>
+        <div class="dropdown-item" href="#" [routerLink]="['ratingGlobal']">Рейтинг глобальный</div>
+      </div>
+    </div>
+    <div class="p-1" [routerLink]="['password']">Соревнования</div>
   </div>
 </nav>
-<router-outlet class="my-3"></router-outlet>
+<router-outlet></router-outlet>
 </body>

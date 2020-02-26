@@ -55,7 +55,7 @@ export class RegistrationComponent implements OnInit {
     this.su = 0;
     this.nameGames.length = 0;
     for (let i = this.shtrafBall[0].id; i < this.shtrafBall[0].id + this.shtrafBall.length; i++) {
-      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i, su: null, ball: 0});
+      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i, su: null, ball: 0, factor: false});
     }
 //    console.log(this.nameGames);
   }
@@ -63,15 +63,21 @@ export class RegistrationComponent implements OnInit {
   setAddSaveGames() {
     this.visibleNameGames = 1;
     for (let i = 0; i < this.shtrafBall.length; i++) {
-      {
-        this.nameGames[i].ball = this.eball[i];
-      }
-      this.nameGames[0].priznak = 1;
       this.nameGames[i].namegames = this.gamesName;
       this.nameGames[i].su = this.shtrafBall[i].shtrafball;
     }
-    this.nameGames.push({id: null, namegames: this.gamesName, priznak: 2, shtrafid: null, su: this.su, ball: null});
-    console.log (this.nameGames);
+    this.nameGames[0].priznak = 1;
+    this.nameGames[1].priznak = 1;
+    this.nameGames.push({
+      id: null,
+      namegames: this.gamesName,
+      priznak: 2,
+      shtrafid: null,
+      su: this.su,
+      ball: 0,
+      factor: false
+    });
+    console.log(this.nameGames);
     this.repository.saveNameGames(this.nameGames).subscribe((saveNameGames: NameGames) => {
       this.repository.getNameGames(2).subscribe((res: any[]) => {
         this.games = res;
@@ -84,13 +90,11 @@ export class RegistrationComponent implements OnInit {
     this.visibleNameGames = 1;
     this.addEditNameGames = 1;
     for (let i = 0; i < this.nameGames.length; i++) {
-      {
-        this.nameGames[i].ball = this.eball[i];
-      }
-      this.nameGames[0].priznak = 1;
       this.nameGames[i].namegames = this.gamesName;
       this.nameGames[i].su = this.shtrafBall[i].shtrafball;
     }
+    this.nameGames[0].priznak = 1;
+    this.nameGames[1].priznak = 1;
     this.repository.saveNameGames(this.nameGames).subscribe((saveNameGames: NameGames) => {
       this.repository.getNameGames(2).subscribe((res: any[]) => {
         this.games = res;
@@ -162,7 +166,8 @@ export class RegistrationComponent implements OnInit {
         priznak: 1,
         shtrafid: sid,
         su: this.su,
-        ball: null
+        ball: this.nameGames[id].ball,
+        factor: this.nameGames[id].factor
       });
     } else {
       this.ball[id] = false;
@@ -172,7 +177,8 @@ export class RegistrationComponent implements OnInit {
         priznak: 0,
         shtrafid: sid,
         su: this.su,
-        ball: null
+        ball: this.nameGames[id].ball,
+        factor: this.nameGames[id].factor
       });
     }
 //    console.log(this.nameGames);
@@ -185,7 +191,7 @@ export class RegistrationComponent implements OnInit {
       this.addEditNameGames = 1;
       this.repository.getGameOpis(this.gamesName).subscribe((res: any[]) => {
         this.nameGames = res;
-        this.su = this.nameGames[0].su;
+        this.su = this.nameGames[this.nameGames.length - 1].su;
         for (let i = 0; i < this.nameGames.length - 1; i++) {
           if (this.nameGames[i].priznak == 1) {
             this.ball[i] = true;

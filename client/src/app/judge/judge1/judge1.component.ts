@@ -51,7 +51,7 @@ export class Judge1Component implements OnInit {
       this.nameGame = this.nameGames.filter(res => this.gameId == res.id);
       this.fakeArray = new Array(this.nameGame[0].su);
       console.log(this.fakeArray);
-      this.test = 90 / this.nameGame[0].su + "%";
+      this.test = 100 / this.nameGame[0].su + "%";
       this.repository.getSelectUsers(this.nameGame[0].id).subscribe((res: any[]) => this.nameUsers = res);
     } else {
       this.fakeArray.length = 0;

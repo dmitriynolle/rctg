@@ -4,7 +4,8 @@ export class ShtrafBall {
     public shtrafid: number,
     public shtrafname: string,
     public shtrafball: number,
-    public ball = 0
+    public ball: number,
+    public factor: boolean
   ) {
   }
 }
@@ -17,5 +18,5 @@ export class UserEtapStata {
   public nomeruser: number;
   public nameuser: string;
   public nameshtraf: string;
-  public sum: number
+  public sum: number;
 }

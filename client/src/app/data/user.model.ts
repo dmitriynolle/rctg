@@ -14,7 +14,20 @@ export class NameGames {
     public priznak: number,
     public shtrafid: number,
     public su: number,
-    public ball: number) {
+    public ball: number,
+    public factor: boolean) {
+  }
+}
+
+export class NameGamesView {
+  constructor(
+    public id: number,
+    public namegames: string,
+    public shtrafid: number,
+    public shtrafname: string,
+    public shtrafball: number,
+    public ball: number,
+    public factor: boolean) {
   }
 }
 

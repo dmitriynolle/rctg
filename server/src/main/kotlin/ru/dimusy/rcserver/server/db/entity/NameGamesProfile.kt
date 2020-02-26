@@ -11,5 +11,6 @@ class namegames (
         val priznak: Int,
         val shtrafid: Int,
         val su: Int,
-        val ball: Int
+        val ball: Int,
+        val factor: Boolean
 )

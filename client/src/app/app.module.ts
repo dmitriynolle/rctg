@@ -7,9 +7,9 @@ import {Judge2Component} from './judge/judge2/judge2.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {RegistrationComponent} from './organizer/registration/registration.component';
-import {MainmenuComponent} from './organizer/mainmenu/mainmenu.component';
+import {EtapmenuComponent} from './etapmenu/etapmenu.component';
 import {ResultComponent} from './rating/result/result.component';
-import {OrganizerComponent} from './organizer/organizer.component';
+import {OrganizermenuComponent} from './organizer/organizermenu/organizermenu.component';
 import {FinesComponent} from './organizer/fines/fines.component';
 import {PasswordComponent} from './password/password.component';
 import { RatingNNComponent } from './rating/rating-nn/rating-nn.component';
@@ -22,9 +22,9 @@ import { RatingGlobalComponent } from './rating/rating-global/rating-global.comp
     Judge1Component,
     Judge2Component,
     RegistrationComponent,
-    MainmenuComponent,
+    EtapmenuComponent,
     ResultComponent,
-    OrganizerComponent,
+    OrganizermenuComponent,
     FinesComponent,
     PasswordComponent,
     RatingNNComponent,

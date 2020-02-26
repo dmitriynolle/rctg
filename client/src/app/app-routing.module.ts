@@ -3,8 +3,8 @@ import {RouterModule} from '@angular/router';
 import {Judge1Component} from './judge/judge1/judge1.component';
 import {Judge2Component} from './judge/judge2/judge2.component';
 import {RegistrationComponent} from './organizer/registration/registration.component';
-import {MainmenuComponent} from './organizer/mainmenu/mainmenu.component';
-import {OrganizerComponent} from './organizer/organizer.component';
+import {EtapmenuComponent} from './etapmenu/etapmenu.component';
+import {OrganizermenuComponent} from './organizer/organizermenu/organizermenu.component';
 import {ResultComponent} from './rating/result/result.component';
 import {FinesComponent} from './organizer/fines/fines.component';
 import {PasswordComponent} from './password/password.component';
@@ -15,8 +15,8 @@ import {RatingGlobalComponent} from "./rating/rating-global/rating-global.compon
 const appRoutes = [
   {path: '', component: MainComponent},
   {path: 'password', component: PasswordComponent},
-  {path: 'mainmenu', component: MainmenuComponent},
-  {path: 'org', component: OrganizerComponent},
+  {path: 'mainmenu', component: EtapmenuComponent},
+  {path: 'org', component: OrganizermenuComponent},
   {path: 'org1', component: RegistrationComponent},
   {path: 'org2', component: ResultComponent},
   {path: 'org3', component: FinesComponent},

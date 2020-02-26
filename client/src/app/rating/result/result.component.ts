@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NameGames} from '../../data/user.model';
+import {NameGames, NameGamesView} from '../../data/user.model';
 import {Repository} from '../../data/repository';
 import {EtapView} from '../../data/registration';
 import {sortBy} from 'sort-by-typescript';
@@ -14,6 +14,8 @@ export class ResultComponent implements OnInit {
   name = '0';
   gamesName: Array<NameGames> = [];
   gameName: Array<NameGames> = [];
+  gameOpis: Array<NameGamesView> = [];
+  gameOpisOne: Array<NameGamesView> = [];
   userEtapStata: Array<UserEtapStata> = [];
   etap: Array<EtapView> = [];
   time: Array<any> = [];
@@ -37,6 +39,7 @@ export class ResultComponent implements OnInit {
     this.gameName = this.gamesName.filter(res => this.name == res.namegames);
     this.repository.getSelectUsers(this.gameName[0].id).subscribe((res: any[]) => {
       this.etap = res;
+      this.repository.getNameGame(this.name).subscribe((rec: any) => this.gameOpis = rec);
       for (let i = 0; i < this.etap.length; i++) {
         this.timer = this.etap[i].timesu1 + this.etap[i].timesu2 + this.etap[i].timesu3 + this.etap[i].timesu4 + this.etap[i].timesu5;
         if (this.timer % 60 < 10) {
@@ -58,7 +61,7 @@ export class ResultComponent implements OnInit {
         this.popupVisible = false;
         this.userEtapStata = this.userEtapStata.sort(sortBy('nomersu'));
         this.index = index;
-        console.log(this.userEtapStata);
+        console.log(this.userEtapStata, this.gameOpis, this.gameName);
       })
     }
   }
@@ -69,5 +72,10 @@ export class ResultComponent implements OnInit {
     } else {
       return (Math.trunc(this.etap[this.index]['timesu' + i] / 60) + ' : ' + this.etap[this.index]['timesu' + i] % 60);
     }
+  }
+
+  shtraffbal(nameshtraf: string): any {
+    this.gameOpisOne = this.gameOpis.filter(rec => rec.shtrafname == nameshtraf);
+    return (this.gameOpisOne[0].shtrafball);
   }
 }

@@ -88,17 +88,17 @@ export class Judge2Component implements OnInit {
 
   stopSchet() {
     for (let i = 0; i < this.nameGamesOpis.length; i++) {
-      if (this.nameGamesOpis[i].shtrafid > 2 && this.nameGamesOpis[i].ball == 1) {
+      if (this.nameGamesOpis[i].shtrafid > 2 && this.nameGamesOpis[i].factor == true) {
         this.summa[i] = this.ball[i] * this.nameGamesOpis[i].shtrafball * this.userEtap[0].factoruser;
       } else {
         if (this.nameGamesOpis[i].shtrafid == 2) {
           if (this.min - this.nameGamesOpis[0].ball > 0) {
             this.summa[i] = (this.min - this.nameGamesOpis[0].ball) * this.nameGamesOpis[i].shtrafball;
           } else {
-            this.summa[i] = 0 * this.nameGamesOpis[i].shtrafball;
+            this.summa[i] = 0;
           }
         } else {
-          if (this.nameGamesOpis[i].shtrafid > 2 && this.nameGamesOpis[i].ball > 1) {
+          if (this.nameGamesOpis[i].shtrafid > 2 && this.nameGamesOpis[i].ball > 0) {
             if (this.ball[i] > this.nameGamesOpis[i].ball) {
               this.summa[i] = (this.ball[i] - this.nameGamesOpis[i].ball) * this.nameGamesOpis[i].shtrafball;
             } else {
