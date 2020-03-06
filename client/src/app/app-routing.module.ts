@@ -10,10 +10,12 @@ import {FinesComponent} from './organizer/fines/fines.component';
 import {PasswordComponent} from './password/password.component';
 import {RatingNNComponent} from './rating/rating-nn/rating-nn.component';
 import {MainComponent} from './main/main.component';
-import {RatingGlobalComponent} from "./rating/rating-global/rating-global.component";
+import {RatingGlobalComponent} from './rating/rating-global/rating-global.component';
+import {SprintComponent} from './judge/sprint/sprint.component';
 
 const appRoutes = [
   {path: '', component: MainComponent},
+  {path: 'sprint', component: SprintComponent},
   {path: 'password', component: PasswordComponent},
   {path: 'mainmenu', component: EtapmenuComponent},
   {path: 'org', component: OrganizermenuComponent},

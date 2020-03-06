@@ -17,4 +17,8 @@ class EtapService (val etapRepository: EtapRepository) {
     fun selectGameId (gameid: Int): List<etap> {
         return etapRepository.selectGameId(gameid)
     }
+
+    fun saveAll(etap: List<etap>): Iterable<etap> {
+        return etapRepository.saveAll(etap)
+    }
 }

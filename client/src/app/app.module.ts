@@ -15,6 +15,7 @@ import {PasswordComponent} from './password/password.component';
 import { RatingNNComponent } from './rating/rating-nn/rating-nn.component';
 import { MainComponent } from './main/main.component';
 import { RatingGlobalComponent } from './rating/rating-global/rating-global.component';
+import { SprintComponent } from './judge/sprint/sprint.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RatingGlobalComponent } from './rating/rating-global/rating-global.comp
     PasswordComponent,
     RatingNNComponent,
     MainComponent,
-    RatingGlobalComponent
+    RatingGlobalComponent,
+    SprintComponent
   ],
   imports: [
     BrowserModule,

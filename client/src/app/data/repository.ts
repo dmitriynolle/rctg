@@ -77,6 +77,10 @@ export class Repository {
   }
 
   saveUserEtapStata(userEtapStata: UserEtapStata[]) {
-    return this.http.post(this.path + 'savestata', userEtapStata)
+    return this.http.post(this.path + 'savestata', userEtapStata);
+  }
+
+  saveSprint(sprint: Etap[]) {
+    return this.http.post(this.path + 'savesprint', sprint);
   }
 }

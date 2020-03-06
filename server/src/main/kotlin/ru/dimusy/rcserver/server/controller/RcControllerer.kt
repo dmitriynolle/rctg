@@ -17,11 +17,11 @@ class RcControllerer(val nameGamesViewService: NameGamesViewService, val etapVie
     @GetMapping("/namegames")
     fun priznaknamegames(@RequestParam("priznak") priznak: Int): List<namegames> = nameGamesService.priznak(priznak)
 
-    @GetMapping ("/opis")
-    fun opis (@RequestParam("namegames") namegames: String): List<namegames> = nameGamesService.opis(namegames)
+    @GetMapping("/opis")
+    fun opis(@RequestParam("namegames") namegames: String): List<namegames> = nameGamesService.opis(namegames)
 
-    @GetMapping ("/gameid")
-    fun selectGameId (@RequestParam("gameid") gameid: Int): List<etap> = etapService.selectGameId(gameid)
+    @GetMapping("/gameid")
+    fun selectGameId(@RequestParam("gameid") gameid: Int): List<etap> = etapService.selectGameId(gameid)
 
     @GetMapping("/selectusers")
     fun selectUsersGames(@RequestParam("gameid") gameid: Int): List<etapview> = etapViewService.selectUsers(gameid)
@@ -60,4 +60,11 @@ class RcControllerer(val nameGamesViewService: NameGamesViewService, val etapVie
         return userEtapStataService.saveAll(useretapstata)
 //        throw NullPointerException()
     }
+
+    @PostMapping("/savesprint")
+    fun saveSprint(@RequestBody etap: List<etap>): Iterable<etap> {
+        return etapService.saveAll(etap)
+//        throw NullPointerException()
+    }
+
 }
