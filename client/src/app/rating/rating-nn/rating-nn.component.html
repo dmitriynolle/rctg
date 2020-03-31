@@ -1,5 +1,5 @@
 <div class="m-2">
-  <table style="font-size: 10pt">
+  <table style="font-size: 10pt; width: 100%">
     <thead>
     <tr style="border-bottom: solid 2px black">
       <th>№</th>
@@ -12,16 +12,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of ratingNN; let i = index" style="border-bottom: solid 1px black">
-      <td>{{item.nomer}}</td>
-      <td *ngIf="item.changeRating == 1"><img src="../../../assets/arrow (1).png" height="10px" width="10px"/></td>
-      <td *ngIf="item.changeRating == -1"><img src="../../../assets/arrow.png" height="10px" width="10px"/></td>
-      <td *ngIf="item.changeRating == 0"></td>
-      <td>{{item.user}}</td>
-      <td>{{item.locality}}</td>
-      <td>{{item.divisionUser}}</td>
-      <td style="text-align: center">{{item.rating}}</td>
-      <td style="text-align: center">{{item.numberOfCompetitions}}</td>
+    <tr *ngFor="let item of ratingNN; let i = index" style="border-bottom: solid 1px black" [routerLink]="['/ratingPilotov', item.MemberID, 'NN']">
+      <td>{{item.Position}}</td>
+      <td *ngIf="item.RatingChange == 1"><img src="../../../assets/arrow (1).png" height="10px" width="10px"/></td>
+      <td *ngIf="item.RatingChange == -1"><img src="../../../assets/arrow.png" height="10px" width="10px"/></td>
+      <td *ngIf="item.RatingChange == 0"></td>
+      <td>{{item.Member}}</td>
+      <td>{{item.Town}}</td>
+      <td>{{item.Division}}</td>
+      <td style="text-align: center">{{item.Rating}}</td>
+      <td style="text-align: center">{{item.Count}}</td>
     </tr>
     </tbody>
   </table>

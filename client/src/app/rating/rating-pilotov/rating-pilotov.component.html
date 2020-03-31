@@ -1,0 +1,29 @@
+<div class="p-4">
+  <span *ngFor="let item of ratingPilota">
+    <span class="row">
+      <span class="col-10 big py-1">{{item.Member}}</span>
+      <span *ngIf="rating == 'NN'" class="col-2 py-2" style="text-align: right" routerLink="/ratingNN">
+        <img src="../../../assets/close.png" height="32" width="32"/>
+      </span>
+      <span *ngIf="rating == 'Global'" class="col-2 py-2" style="text-align: right" routerLink="/ratingGlobal">
+        <img src="../../../assets/close.png" height="32" width="32"/>
+      </span>
+    </span>
+    <span class="row pb-4">
+      <span class="col-12">{{item.Town}}</span>
+    </span>
+    <span *ngFor="let itemLeague of item.League">
+      <span class="row">
+        <span class="col-12 py-1 big16 bg">{{itemLeague.LeagueName}}</span>
+      </span>
+      <span *ngFor="let itemTournaments of itemLeague.Tournaments">
+        <span class="row">
+          <span class="col-3 py-1">{{itemTournaments.TournamentOrganizer}}</span>
+          <span class="col-8 py-1">{{itemTournaments.TournamentName}}</span>
+          <span class="col-1 py-1">{{itemTournaments.TournamentPosition}}</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+

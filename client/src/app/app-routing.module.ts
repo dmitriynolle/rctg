@@ -12,6 +12,7 @@ import {RatingNNComponent} from './rating/rating-nn/rating-nn.component';
 import {MainComponent} from './main/main.component';
 import {RatingGlobalComponent} from './rating/rating-global/rating-global.component';
 import {SprintComponent} from './judge/sprint/sprint.component';
+import {RatingPilotovComponent} from './rating/rating-pilotov/rating-pilotov.component';
 
 const appRoutes = [
   {path: '', component: MainComponent},
@@ -26,6 +27,7 @@ const appRoutes = [
   {path: 'su2/:game/:user/:su', component: Judge2Component},
   {path: 'ratingNN', component: RatingNNComponent},
   {path: 'ratingGlobal', component: RatingGlobalComponent},
+  {path: 'ratingPilotov/:memberID/:rating', component: RatingPilotovComponent},
   {path: '**', redirectTo: '/'}
 ];
 

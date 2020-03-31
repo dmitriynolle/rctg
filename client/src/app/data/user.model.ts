@@ -1,3 +1,4 @@
+
 export class UserModel {
   constructor(
     public id: number,
@@ -33,13 +34,44 @@ export class NameGamesView {
 
 export class RatingNN {
   constructor(
-    public divisionUser: string,
-    public changeRating: number,
-    public numberOfCompetitions: number,
-    public rating: number,
-    public nomer: number,
-    public user: string,
-    public userID: string,
-    public locality: string) {
+    public Division: string,
+    public RatingChange: number,
+    public Count: number,
+    public Rating: number,
+    public Position: number,
+    public Member: string,
+    public MemberID: string,
+    public Town: string) {
+  }
+}
+
+export class RatingPilotov {
+  constructor(
+    public MemberID: string,
+    public Member: string,
+    public Town: string,
+    public League: Array<RatingPilotovLeague>
+  ) {
+  }
+}
+
+export class RatingPilotovLeague {
+  constructor(
+    public LeagueName: string,
+    public Tournaments: Array<RatingPilotovLeagueTournaments>
+  ) {
+  }
+}
+
+export class RatingPilotovLeagueTournaments {
+  constructor(
+    public TournamentName: string,
+    public TournamentPosition: number,
+    public TournamentOrganizer: string,
+    public TournamentDate: Date,
+    public TournamentClass: string,
+    public TournamentModel: string,
+    public TournamentPenaltyPoints: number
+  ) {
   }
 }

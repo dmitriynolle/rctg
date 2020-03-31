@@ -17,11 +17,15 @@ export class Repository {
   }
 
   getRatingNN() {
-    return this.http.get('assets/ReytingRCTG_Nizniy_Novgorod.json');
+    return this.http.get('assets/Reyting_RCTG_Nizniy_Novgorod.txt');
+  }
+
+  getRatingPilotov() {
+    return this.http.get('assets/ReytingPilotov.txt');
   }
 
   getRatingGlobal() {
-    return this.http.get('assets/ReytingGlobalnaya_liga.json');
+    return this.http.get('assets/Reyting_Global.txt');
   }
 
   getUsers() {
