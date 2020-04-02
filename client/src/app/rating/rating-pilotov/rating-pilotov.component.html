@@ -18,7 +18,7 @@
       </span>
       <table style="width: 100%">
         <thead style="text-align: center">
-        <tr>
+        <tr style="border-bottom: black 1px solid">
           <th>Лига</th>
           <th>Ивент</th>
           <th>Дата</th>
@@ -26,8 +26,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let itemTournaments of itemLeague.Tournaments">
-          <td style="width: 10ch; text-align: center">{{itemTournaments.TournamentOrganizer}}</td>
+        <tr *ngFor="let itemTournaments of itemLeague.Tournaments" style="border-top: black 1px solid">
+          <td style="width: 15%; text-align: center">{{itemTournaments.TournamentOrganizer}}</td>
           <td>{{itemTournaments.TournamentName}}</td>
           <td style="width: 10ch; text-align: center">{{itemTournaments.TournamentDate | date: 'dd.MM.yy'}}</td>
           <td style="width: 6ch; text-align: center">{{itemTournaments.TournamentPosition}}</td>

@@ -40,7 +40,7 @@ export class RatingPilotovComponent implements OnInit {
           });
         for (let j = 0; j < this.ratingPilota[0].League[i].Tournaments.length; j++) {
           const date = new Date(this.ratingPilota[0].League[i].Tournaments[j].TournamentDate);
-          console.log(date);
+          // console.log(date);
         }
       }
     });
