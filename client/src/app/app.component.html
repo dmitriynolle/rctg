@@ -1,16 +1,16 @@
 <body>
-<nav class="navbar-expand bg py-3 border m-2">
+<nav class="navbar-expand bg border m-2">
   <div class="navbar-collapse big16">
-    <div class="ml-3 p-1" [routerLink]="['']" style="width: 33%; text-align: center">Главная</div>
-    <div class="nav-item dropdown">
-      <div class="p-1" data-toggle="dropdown" aria-haspopup="true" style="width: 33%; text-align: center">Результаты</div>
-      <div class="dropdown-menu">
-        <div class="dropdown-item" href="#" [routerLink]="['org2']">Результаты</div>
-        <div class="dropdown-item" href="#" [routerLink]="['ratingNN']">Рейтинг НН</div>
-        <div class="dropdown-item" href="#" [routerLink]="['ratingGlobal']">Рейтинг глобальный</div>
+    <div [routerLink]="['']" style="width: 33%; text-align: center">Главная</div>
+    <div class="nav-item dropdown" style="width: 33%; text-align: center">
+      <div class="p-3" data-toggle="dropdown" aria-haspopup="true">Результаты</div>
+      <div class="dropdown-menu border" style="width: 100%">
+        <div class="dropdown-item py-3" href="#" [routerLink]="['org2']">Результаты</div>
+        <div class="dropdown-item py-3" href="#" [routerLink]="['ratingNN']">Рейтинг НН</div>
+        <div class="dropdown-item py-3" href="#" [routerLink]="['ratingGlobal']">Рейтинг глоб.</div>
       </div>
     </div>
-    <div class="p-1" [routerLink]="['password']" style="width: 33%; text-align: center">Ивент</div>
+    <div [routerLink]="['password']" style="width: 33%; text-align: center">Ивент</div>
   </div>
 </nav>
 <router-outlet></router-outlet>

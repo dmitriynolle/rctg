@@ -17,6 +17,7 @@ import { MainComponent } from './main/main.component';
 import { RatingGlobalComponent } from './rating/rating-global/rating-global.component';
 import { SprintComponent } from './judge/sprint/sprint.component';
 import { RatingPilotovComponent } from './rating/rating-pilotov/rating-pilotov.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RatingPilotovComponent } from './rating/rating-pilotov/rating-pilotov.c
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

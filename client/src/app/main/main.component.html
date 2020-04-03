@@ -1,4 +1,7 @@
-<div class="center">
-  <p class="big16" style="text-align: center">Добро пожаловать</p>
-  <img src="../../assets/logo.jpg" height="200" width="200"/>
-</div>
+
+<span *ngFor="let item of photoVk" class="p-2"  style="height: 100%; width: 100%">
+  <p style="text-align: center" [@expandedPanel]="state">
+<!--    {{photoVk[0]}}-->
+    <img style="vertical-align: center;" src={{photoVk[0].src}} width="60%"/>
+  </p>
+</span>

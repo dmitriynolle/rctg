@@ -75,3 +75,10 @@ export class RatingPilotovLeagueTournaments {
   ) {
   }
 }
+
+export class VkPhoto {
+  constructor(
+    public photo_1280: string
+  ) {
+  }
+}

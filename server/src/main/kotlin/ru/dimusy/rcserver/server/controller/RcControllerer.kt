@@ -1,12 +1,28 @@
 package ru.dimusy.rcserver.server.controller
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpMethod
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import ru.dimusy.rcserver.server.db.entity.*
 import ru.dimusy.rcserver.server.service.*
+import java.util.*
 
 @CrossOrigin
 @RestController
-class RcControllerer(val nameGamesViewService: NameGamesViewService, val etapViewService: EtapViewService, val etapService: EtapService, val rcUsersService: RcUsersService, val nameGamesService: NameGamesService, val shtrafBallService: StrafBallService, val userEtapStataService: UserEtapStataService) {
+class RcControllerer(val nameGamesViewService: NameGamesViewService,
+                     val etapViewService: EtapViewService,
+                     val etapService: EtapService,
+                     val rcUsersService: RcUsersService,
+                     val nameGamesService: NameGamesService,
+                     val shtrafBallService: StrafBallService,
+                     val userEtapStataService: UserEtapStataService,
+                     val vkService: VkService) {
+
+    @GetMapping("/VK")
+    fun getAll() = vkService.getAll();
 
     @GetMapping("/users")
     fun findallusers() = rcUsersService.findall()
