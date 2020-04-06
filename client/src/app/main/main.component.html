@@ -1,7 +1,6 @@
-
 <span *ngFor="let item of photoVk" class="p-2"  style="height: 100%; width: 100%">
-  <p style="text-align: center" [@expandedPanel]="state">
-<!--    {{photoVk[0]}}-->
-    <img style="vertical-align: center;" src={{photoVk[0].src}} width="60%"/>
+  <p style="text-align: center">
+    <img *ngIf="height < width" class="border p-3" src={{photoVk[0].src}} height="{{height}}">
+    <img *ngIf="height > width" class="border p-3" src={{photoVk[0].src}} width="{{width}}">
   </p>
 </span>

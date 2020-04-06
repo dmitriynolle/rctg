@@ -1,16 +1,16 @@
 <body>
-<nav class="navbar-expand bg border m-2">
-  <div class="navbar-collapse big16">
-    <div [routerLink]="['']" style="width: 33%; text-align: center">Главная</div>
+<nav class="navbar-expand bg border m-2" style="border-radius: 10px">
+  <div class="navbar-collapse big">
+    <div class="cursor" [routerLink]="['']" style="width: 33%; text-align: center">Главная</div>
     <div class="nav-item dropdown" style="width: 33%; text-align: center">
-      <div class="p-3" data-toggle="dropdown" aria-haspopup="true">Результаты</div>
+      <div class="p-3 cursor" data-toggle="dropdown" aria-haspopup="true">Результаты</div>
       <div class="dropdown-menu border" style="width: 100%">
-        <div class="dropdown-item py-3" href="#" [routerLink]="['org2']">Результаты</div>
-        <div class="dropdown-item py-3" href="#" [routerLink]="['ratingNN']">Рейтинг НН</div>
-        <div class="dropdown-item py-3" href="#" [routerLink]="['ratingGlobal']">Рейтинг глоб.</div>
+        <div class="dropdown-item py-3 cursor" [routerLink]="['org2']">Результаты</div>
+        <div class="dropdown-item py-3 cursor" [routerLink]="['ratingNN']">Рейтинг НН</div>
+        <div class="dropdown-item py-3 cursor" [routerLink]="['ratingGlobal']">Рейтинг глоб.</div>
       </div>
     </div>
-    <div [routerLink]="['password']" style="width: 33%; text-align: center">Ивент</div>
+    <div class="cursor" [routerLink]="['password']" style="width: 33%; text-align: center">Ивент</div>
   </div>
 </nav>
 <router-outlet></router-outlet>
