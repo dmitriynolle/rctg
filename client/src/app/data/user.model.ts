@@ -82,3 +82,16 @@ export class VkPhoto {
   ) {
   }
 }
+export class VkWall {
+  constructor(
+    public copy_history: object,
+    public owner_id: string,
+    public text: string,
+    public attachments: object,
+    // public video: object,
+    // public link: object,
+    // public photo: object,
+    // public photo_604: string
+  ) {
+  }
+}

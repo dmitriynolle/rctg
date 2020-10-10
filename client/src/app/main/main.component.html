@@ -1,6 +1,20 @@
-<span *ngFor="let item of photoVk" class="p-2"  style="height: 100%; width: 100%">
-  <p style="text-align: center">
-    <img *ngIf="height < width" class="border p-3" src={{photoVk[0].src}} height="{{height}}">
-    <img *ngIf="height > width" class="border p-3" src={{photoVk[0].src}} width="{{width}}">
-  </p>
-</span>
+<!--<span *ngFor="let item of photoVk" class="p-2"  style="height: 100%; width: 100%">-->
+<!--  <p style="text-align: center">-->
+<!--    <img *ngIf="height < width" class="border p-3" src={{photoVk[0].src}} height="{{height}}">-->
+<!--    <img *ngIf="height > width" class="border p-3" src={{photoVk[0].src}} width="{{width}}">-->
+<!--  </p>-->
+<!--</span>-->
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center">
+  <div *ngFor="let item of photosVk">
+    <div *ngIf="item.copy_history == null" class="p-2 m-2" style="max-width: 620px">
+      <div class="m-3 big">{{item.text}}</div>
+      <a class="ml-3 big14" *ngIf="item.attachments[0].type == 'video'"
+         href="https://vk.com/video{{item.owner_id}}_{{item.attachments[0].video.id}}">Посмотреть</a>
+      <img *ngIf="item.attachments[0].type == 'video'" class="border_round m-3 news_foto" src={{item.attachments[0].video.photo_800}}>
+      <a class="ml-3 big14" *ngIf="item.attachments[0].type == 'link'"
+         href={{item.attachments[0].link.url}}>Посмотреть</a>
+      <img *ngIf="item.attachments[0].type == 'link'" class="border_round m-3 news_foto" src={{item.attachments[0].link.photo.sizes[2].url}}>
+      <img *ngIf="item.attachments[0].type == 'photo'" class="border_round m-3 news_foto" src={{item.attachments[0].photo.sizes[4].url}}>
+    </div>
+  </div>
+</div>

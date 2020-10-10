@@ -1,17 +1,31 @@
 <body>
-<nav class="navbar-expand bg border m-2" style="border-radius: 10px">
-  <div class="navbar-collapse big">
-    <div class="cursor" [routerLink]="['']" style="width: 33%; text-align: center">Главная</div>
-    <div class="nav-item dropdown" style="width: 33%; text-align: center">
-      <div class="p-3 cursor" data-toggle="dropdown" aria-haspopup="true">Результаты</div>
-      <div class="dropdown-menu border" style="width: 100%">
-        <div class="dropdown-item py-3 cursor" [routerLink]="['org2']">Результаты</div>
-        <div class="dropdown-item py-3 cursor" [routerLink]="['ratingNN']">Рейтинг НН</div>
-        <div class="dropdown-item py-3 cursor" [routerLink]="['ratingGlobal']">Рейтинг глоб.</div>
-      </div>
-    </div>
-    <div class="cursor" [routerLink]="['password']" style="width: 33%; text-align: center">Ивент</div>
+<div style="max-width: 1400px; margin: 0 auto;">
+  <div class="logovkyou mt-2">
+    <a href="https://vk.com/nnrctg" class="mr-3" target="_blank" title="Наш VK">
+      <img src="../assets/vk.png" height="20"></a>
+    <a href="https://www.youtube.com/channel/UCb8ZS8oCy8BEoNoTuwy8BZg" class="mr-3">
+      <img src="../assets/youtube.png" height="20" target="_blank" title="Наш YouTube"></a>
   </div>
-</nav>
+<div class="{{fon}} m-2 border border_round sticky">
+  <div class="logo">
+    <img src="../assets/Logotip.png" class="logo_img">
+  </div>
+  <nav class="navbar-expand bg_main border_round">
+    <div class="navbar-collapse big16">
+      <div class="nav-link cursor {{active[0]}}" [routerLink]="['']" (click)="serActive(0)"><a>Главная</a></div>
+      <div class="nav-item dropdown">
+        <div class="nav-link cursor {{active[1]}}" data-toggle="dropdown" aria-haspopup="true">Результаты</div>
+        <div class="dropdown-menu border" style="width: 100%">
+          <div class="dropdown-item py-3 cursor" [routerLink]="['org2']" (click)="serActive(1)">Результаты</div>
+          <div class="dropdown-item py-3 cursor" [routerLink]="['ratingNN']" (click)="serActive(1)">Рейтинг НН</div>
+          <div class="dropdown-item py-3 cursor" [routerLink]="['ratingGlobal']" (click)="serActive(1)">Рейтинг глоб.
+          </div>
+        </div>
+      </div>
+      <div class="nav-link cursor {{active[2]}}" [routerLink]="['password']" (click)="serActive(2)">Ивент</div>
+    </div>
+  </nav>
+</div>
 <router-outlet></router-outlet>
+</div>
 </body>
