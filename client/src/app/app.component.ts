@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
       this.active[i] = null;
     }
     this.active[num] = 'test';
-    if (num == 1 || num == 2) {
+    if (num == 2) {
       this.fon = 'fon';
     }
     else {

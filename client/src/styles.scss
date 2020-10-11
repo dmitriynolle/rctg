@@ -1,5 +1,5 @@
 a {
-  color: black;
+  color: red;
 }
 
 :focus{
@@ -7,7 +7,13 @@ a {
 }
 
 .test{
-  border-bottom: 3px solid wheat;
+  border-bottom: 5px solid black;
+  //background: linear-gradient(0deg, white, transparent);
+}
+
+.item_menu{
+  flex-grow: 1;
+  text-align: center;
 }
 
 body {
@@ -60,15 +66,17 @@ body {
 }
 .border_round{
   border-radius: 30px;
+  margin-top: 10px;
 }
 
 .bg_main {
-  background: linear-gradient(0deg, #000000, rgba(0, 0, 0, 0));
-  color: wheat;
+  //background: linear-gradient(0deg, black, rgba(0, 0, 0, 0));
+  color: black;
 }
 .sticky{
     position: sticky;
-    top: -350px;
+    top: -425px;
+  z-index: 5;
 }
 .bg{
   background-color: #fdc332;
@@ -87,20 +95,20 @@ body {
 }
 .fon_big{
   .logo{
-    height: 350px;
-    width: 350px;
+    height: 425px;
     visibility: visible;
   }
   background-image: url("assets/fon.jpg");
   background-size: cover;
-  background-position: center;
+  background-position-x: left;
+  background-position-y: top;
   background-repeat: no-repeat;
 }
 .fon{
-  width: 100%;
+  //width: 100%;
   background-image: url("assets/fon.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
 }
 
@@ -131,8 +139,12 @@ button:focus {
 .navbar-collapse{
   justify-content: space-around;
 }
-.news_foto{
-  width: 600px
+.news_lenta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 520px;
+  background-color: white
 }
 
 @media (max-width: 1023px) {
@@ -151,7 +163,7 @@ button:focus {
       width: 100px;
     }
   }
-  .news_foto{
-    width: 300px
+  .news_lenta{
+    width: auto;
   }
 }
