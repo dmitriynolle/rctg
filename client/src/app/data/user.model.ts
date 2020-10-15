@@ -87,7 +87,7 @@ export class VkWall {
     public copy_history: object,
     public owner_id: string,
     public text: string,
-    public attachments: object,
+    public attachments: Array<any>,
     // public video: object,
     // public link: object,
     // public photo: object,

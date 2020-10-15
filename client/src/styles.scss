@@ -107,7 +107,7 @@ body {
 .fon{
   //width: 100%;
   background-image: url("assets/fon.jpg");
-  background-size: cover;
+  background-size: auto;
   background-position: bottom;
   background-repeat: no-repeat;
 }
@@ -124,6 +124,13 @@ select:focus,
 input:focus,
 button:focus {
   outline: none;
+}
+
+.img50{
+  width: 50%;
+}
+.img100{
+  width: 100%;
 }
 
 .popup {

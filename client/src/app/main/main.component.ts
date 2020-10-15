@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   private imgs: any;
   private height = window.innerHeight - 150;
   private width = window.innerWidth - 50;
+  private widthImg = 'img100';
   private text2: Array<string>;
   private text3: Array<string>;
   private visible = false;
@@ -45,17 +46,26 @@ export class MainComponent implements OnInit {
             this.photosVk[j].text = this.photosVk[j].text + this.text2[k];
           }
         }
-        console.log(this.text2);
-        console.log(this.text3);
-        console.log(this.photosVk[j].text);
+        console.log(this.photosVk[j]);
+        // console.log(this.text3);
+        // console.log(this.photosVk[j].attachments);
       }
     });
 
   }
-  loadBigFoto(i: number) {
+  loadBigFoto(i: number, j: number) {
     this.height = window.innerHeight - 150;
     this.width = window.innerWidth - 50;
     this.visible = true;
-    this.bigFoto = this.photosVk[i].attachments[0].photo.sizes[this.photosVk[i].attachments[0].photo.sizes.length - 1].url;
+    this.bigFoto = this.photosVk[i].attachments[j].photo.sizes[this.photosVk[i].attachments[j].photo.sizes.length - 1].url;
+
+  }
+
+  imgWidth(i: number) {
+    if (this.photosVk[i].attachments.length > 1 && this.photosVk[i].attachments[1].type == 'photo') {
+      this.widthImg = 'img50';
+    } else {
+      this.widthImg = 'img100';
+    }
   }
 }
