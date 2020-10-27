@@ -1,4 +1,24 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center">
+<div class="main_header">
+  <div class="main_header_text">
+    <div>
+      <p class="text_h1">Сообщество трофи-моделистов</p>
+      <p>Открытая группа для общения людей связанных с RC Триалом и Трофи в Нижнем Новгороде, Дзержинске,
+        Кстово, Павлово.</p>
+      <p>Дата основания: 19 ноября 2015 года.</p>
+    </div>
+    <div>
+      <div class="main_vk">
+        <img src="assets/logoVk.png" alt="logovk">
+        <span>&ensp;Присоединиться к нам</span>
+      </div>
+    </div>
+  </div>
+  <div class="main_header_img">
+    <img src="assets/logoTrophyNn.jpg" alt="biglogo" width="100%">
+  </div>
+</div>
+
+<div>
   <div *ngIf="visible"
        style="position: fixed; display: flex; top: 0px; z-index: 6; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.4)">
     <img *ngIf="height < width" src="{{bigFoto}}" (click)="visible = false" style="margin: auto" class="border"
@@ -6,22 +26,33 @@
     <img *ngIf="height > width" src="{{bigFoto}}" (click)="visible = false" style="margin: auto" class="border"
          width="{{width}}">
   </div>
-  <div *ngFor="let item of photosVk, let i = index">
-    <div *ngIf="item.copy_history == null" class="border p-2 m-2 news_lenta">
-      <div class="pl-2 pr-2 big14" [innerHTML]="item.text" style="width: 100%"></div>
-      <a class="big14" *ngIf="item.attachments[0].type == 'video'" target="_blank" title="Посмотреть"
-         href="https://vk.com/video{{item.owner_id}}_{{item.attachments[0].video.id}}">
-        <img *ngIf="item.attachments[0].type == 'video'" src={{item.attachments[0].video.photo_800}} width="100%">
-      </a>
-      <a class="big14" *ngIf="item.attachments[0].type == 'link'" target="_blank" title="Посмотреть"
-         href={{item.attachments[0].link.url}}>
-        <img *ngIf="item.attachments[0].type == 'link'" src={{item.attachments[0].link.photo.sizes[0].url}}
-             width="100%">
-      </a>
-      <div style="display: flex; flex-wrap: wrap" >
-        {{imgWidth(i)}}
+  <div *ngFor="let item of photosVk, let i = index" class="news_lenta pt-4 pb-4">
+    <div *ngIf="item.copy_history == null" class="p-3 mt-4" [ngClass]="newsdirect(i)">
+      <div class="news_post_text">
+        <div class="news_post_text_header">{{item.date * 1000 | date:'dd MMMM'}}</div>
+        <div class=" overflow-auto news_post_text_text" [innerHTML]="item.text"></div>
+      </div>
+      <div *ngIf="item.attachments[0].type == 'video'" class="news_post_img">
+        <a style="display: block; height: 100%" *ngIf="item.attachments[0].type == 'video'" target="_blank"
+           title="Посмотреть"
+           href="https://vk.com/video{{item.owner_id}}_{{item.attachments[0].video.id}}">
+          <img src={{item.attachments[0].video.photo_800}} class="smoll_img_size shadow img-thumbnail">
+        </a>
+      </div>
+      <div *ngIf="item.attachments[0].type == 'link'" class="news_post_img">
+        <a *ngIf="item.attachments[0].type == 'link'" target="_blank" title="Посмотреть"
+           href={{item.attachments[0].link.url}} style="display: block; height: 100%">
+          <img *ngIf="item.attachments[0].type == 'link'" src={{item.attachments[0].link.photo.sizes[0].url}}
+               class="smoll_img_size shadow img-thumbnail">
+        </a>
+      </div>
+      <div *ngIf="item.attachments[0].type == 'photo'" class="news_post_img"
+           style="margin: auto; position: relative"
+           (click)="loadBigFoto(i, 0)">
         <div *ngFor="let item1 of item.attachments, let j = index" class="{{widthImg}}">
-          <img *ngIf="item.attachments[j].type == 'photo'" (click)="loadBigFoto(i, j)" src={{item1.photo.sizes[4].url}} style="width: 100%; border: 1px solid white">
+          <img *ngIf="item.attachments[j].type == 'photo'" (click)="loadBigFoto(i, j)" src={{item1.photo.sizes[4].url}}
+               class="backpage_0 smoll_img_size shadow img-thumbnail" id="{{j}}"
+               [ngStyle]="{'z-index': item.attachments.length - j, 'position': 'absolute', 'bottom': (j)*10+'px', 'left': (j)*10 +'px'}">
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import {Repository} from '../../data/repository';
 import {NameGames, UserModel} from '../../data/user.model';
 import {Etap} from '../../data/registration';
 import {ShtrafBall} from '../../data/shtraf';
+import {sortBy} from "sort-by-typescript";
 
 @Component({
   selector: 'app-org',
@@ -44,6 +45,7 @@ export class RegistrationComponent implements OnInit {
     });
     this.repository.getUsers().subscribe((res: any[]) => {
       this.users = res;
+      this.users = this.users.sort(sortBy('username'));
     });
   }
 
@@ -55,7 +57,15 @@ export class RegistrationComponent implements OnInit {
     this.su = 0;
     this.nameGames.length = 0;
     for (let i = this.shtrafBall[0].id; i < this.shtrafBall[0].id + this.shtrafBall.length; i++) {
-      this.nameGames.push({id: null, namegames: this.gamesName, priznak: 0, shtrafid: i, su: null, ball: 0, factor: false});
+      this.nameGames.push({
+        id: null,
+        namegames: this.gamesName,
+        priznak: 0,
+        shtrafid: i,
+        su: null,
+        ball: 0,
+        factor: false
+      });
     }
 //    console.log(this.nameGames);
   }
@@ -113,7 +123,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   setAddSaveUser() {
-    if (this.users.filter(rec => this.userNumber == rec.usernumber).length != 0 || this.users.filter(rec => this.userName == rec.username).length != 0) {
+    if (this.users.filter(rec => this.userNumber == rec.usernumber && this.factor == rec.factor).length != 0
+      || this.users.filter(rec => this.userName == rec.username && this.factor == rec.factor).length != 0) {
       this.userRegistred = 3;
     } else {
       this.nameUser.push({id: null, usernumber: this.userNumber, username: this.userName, factor: this.factor});
@@ -218,7 +229,7 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.repository.getGamesId(this.nameGames[this.nameGames.length - 1].id).subscribe((res: any[]) => {
         this.usersEtap = res;
-        this.nameUser = (this.users.filter(rec => rec.username == this.userName));
+        this.nameUser = (this.users.filter(rec => rec.username + rec.factor == this.userName));
         if (this.usersEtap.filter(res => res.userid == this.nameUser[0].id).length != 0) {
           this.userRegistred = 1;
           this.addEditUser = 0;

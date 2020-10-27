@@ -1,11 +1,23 @@
 <div class="m-4">
   <div [hidden]="!popupVisible">
-    <div class="row">
-        <select class="col-12 border big p-2" [(ngModel)]="name"
-                (change)="getSelectNameGames()" name="game" id="1" style="width: 100%">
-          <option value="0">Выберите соревнование</option>
-          <option *ngFor="let item of gamesName" value="{{item.namegames}}">{{item.namegames}}</option>
-        </select>
+    <div class="row big">
+      <select class="col-9 border p-2" [(ngModel)]="name" (change)="getSelectNameGames()" name="game" id="1"
+              style="width: 100%">
+        <option value="0">Выберите соревнование</option>
+        <option *ngFor="let item of gamesName" value="{{item.namegames}}">{{item.namegames}}</option>
+      </select>
+      <div class="col-1 mt-auto big14">
+        <input class="mt-auto mr-1" type="radio" name="exampleRadios" value="0" (click)="getKResult(0)" checked>
+        <label>All</label>
+      </div>
+      <div class="col-1 mt-auto big14">
+        <input class="mt-auto mr-1" type="radio" name="exampleRadios" value="1" (click)="getKResult(1)">
+        <label>K1</label>
+      </div>
+      <div class="col-1 mt-auto big14">
+        <input class="mt-auto mr-1" type="radio" name="exampleRadios" value="2" (click)="getKResult(2)">
+        <label>K2</label>
+      </div>
     </div>
 
     <table style="width: 100%" class="big14">
@@ -14,16 +26,18 @@
         <th>№</th>
         <th>Номер</th>
         <th class="p-2">ФИО</th>
+        <th>Класс</th>
         <th>Баллы</th>
         <th>Время</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of etap; let i = index" [class.light]="item.su1>9000"
+      <tr *ngFor="let item of etapK; let i = index" [class.light]="item.su1>9000"
           (click)="allInfo(etap[i].gameid, etap[i].userid, i)">
         <td>{{i + 1}}</td>
         <td>{{item.nomeruser}}</td>
         <td class="p-2">{{item.username}}</td>
+        <td>{{item.factoruser}}</td>
         <td>{{item.summa}}</td>
         <td>{{item.time}}</td>
       </tr>
@@ -34,7 +48,8 @@
   <div *ngFor="let item of userEtapStata; index as i" [hidden]="popupVisible">
     <div class="row big" *ngIf="i==0">
       <div class="col-10 border py-2">{{item.nameetap}}</div>
-      <div class="col-2 border py-2 bg" (click)="popupVisible = true" style="text-align: center"><img src="../../../assets/close.png"/>
+      <div class="col-2 border py-2 bg" (click)="popupVisible = true" style="text-align: center"><img
+        src="../../../assets/close.png"/>
       </div>
     </div>
     <div class="row big16" *ngIf="i == 0">
@@ -44,7 +59,7 @@
         {{etap[index].su1 + etap[index].su2 + etap[index].su3 + etap[index].su4 + etap[index].su5}}
       </div>
     </div>
-    <div class="row"  *ngIf="i == 0 || userEtapStata[i].nomersu != userEtapStata[i-1].nomersu"
+    <div class="row" *ngIf="i == 0 || userEtapStata[i].nomersu != userEtapStata[i-1].nomersu"
          style="border-bottom: solid 1px black">
       <div class="col-7 mt-3">СУ {{item.nomersu}}</div>
       <div class="col-3 mt-3">{{timermath(userEtapStata[i].nomersu)}}</div>
@@ -57,3 +72,4 @@
     </div>
   </div>
 </div>
+

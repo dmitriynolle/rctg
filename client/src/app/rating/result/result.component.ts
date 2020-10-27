@@ -18,6 +18,7 @@ export class ResultComponent implements OnInit {
   gameOpisOne: Array<NameGamesView> = [];
   userEtapStata: Array<UserEtapStata> = [];
   etap: Array<EtapView> = [];
+  etapK: Array<EtapView> = [];
   time: Array<any> = [];
   popupVisible = true;
   index: number;
@@ -51,11 +52,12 @@ export class ResultComponent implements OnInit {
       }
       this.etap = this.etap.sort(sortBy('time'));
       this.etap = this.etap.sort(sortBy('summa'));
+      this.getKResult(0);
     });
   }
 
   allInfo(gameId: number, userId: number, index: number) {
-    if (this.etap[index].su1 < 9000) {
+    if (this.etap[index].su1 < 9000 || this.etap[index].su2 < 9000 || this.etap[index].su3 < 9000 || this.etap[index].su4 < 9000 || this.etap[index].su5 < 9000) {
       this.repository.getUserEtapStata(gameId, userId).subscribe((rec: any) => {
         this.userEtapStata = rec;
         this.popupVisible = false;
@@ -77,5 +79,13 @@ export class ResultComponent implements OnInit {
   shtraffbal(nameshtraf: string): any {
     this.gameOpisOne = this.gameOpis.filter(rec => rec.shtrafname == nameshtraf);
     return (this.gameOpisOne[0].shtrafball);
+  }
+
+  getKResult(idCategory: number) {
+    if (idCategory != 0) {
+      this.etapK = this.etap.filter((res: EtapView) => res.factoruser == idCategory);
+    } else {
+      this.etapK = this.etap;
+    }
   }
 }

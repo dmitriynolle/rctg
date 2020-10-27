@@ -4,6 +4,7 @@ import {NameGames} from '../../data/user.model';
 import {EtapView} from '../../data/registration';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {sortBy} from "sort-by-typescript";
 
 @Component({
   selector: 'app-home',
@@ -52,7 +53,10 @@ export class Judge1Component implements OnInit {
       this.fakeArray = new Array(this.nameGame[0].su);
       console.log(this.fakeArray);
       this.test = 100 / this.nameGame[0].su + "%";
-      this.repository.getSelectUsers(this.nameGame[0].id).subscribe((res: any[]) => this.nameUsers = res);
+      this.repository.getSelectUsers(this.nameGame[0].id).subscribe((res: any[]) => {
+        this.nameUsers = res;
+        this.nameUsers = this.nameUsers.sort(sortBy('username'));
+      });
     } else {
       this.fakeArray.length = 0;
       this.su = 0;
@@ -61,7 +65,7 @@ export class Judge1Component implements OnInit {
 
   changeUser() {
     if (this.userName != '0') {
-      this.nameUser = this.nameUsers.filter(res => this.userName == res.username);
+      this.nameUser = this.nameUsers.filter(res => this.userName == res.username+res.factoruser);
       this.factor = this.nameUser[0].factoruser;
       this.number = this.nameUser[0].nomeruser;
       this.userId = this.nameUser[0].userid;

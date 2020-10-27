@@ -1,12 +1,12 @@
 <div class="m-4">
   <div class="row">
-    <input class="col-9 border big14 py-2" type="text" [(ngModel)]="name">
-    <input class="col-3 border big14 py-2" type="text" [(ngModel)]="ball">
+    <input class="col-9 big14 py-2" type="text" [(ngModel)]="name">
+    <input class="col-3 big14 py-2" type="text" [(ngModel)]="ball">
   </div>
   <div class="row my-2">
-    <button class="col-6 border bg big14 py-2" (click)="save()" [disabled]="!ball && !name">Сохранить</button>
-    <button class="col-3 border bg big14 py-2" (click)="cancel()" [disabled]="!ball && !name">Сброс</button>
-    <button class="col-3 border bg big14 py-2" [routerLink]="['/org']">Назад</button>
+    <button class="col-6 bg big14 py-2" (click)="save()" [disabled]="!ball && !name">Сохранить</button>
+    <button class="col-3 bg big14 py-2" (click)="cancel()" [disabled]="!ball && !name">Сброс</button>
+    <button class="col-3 bg big14 py-2" [routerLink]="['/org']">Назад</button>
   </div>
   <div>
     <table style="width: 100%; font-size: 16pt">

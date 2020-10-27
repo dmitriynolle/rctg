@@ -88,6 +88,7 @@ export class VkWall {
     public owner_id: string,
     public text: string,
     public attachments: Array<any>,
+    public date: Date,
     // public video: object,
     // public link: object,
     // public photo: object,

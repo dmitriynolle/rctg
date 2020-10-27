@@ -11,6 +11,7 @@ export class Repository {
 
   constructor(private http: HttpClient) {
   }
+
   getVkPhoto() {
     return this.http.get(this.path + 'VK');
   }
@@ -52,14 +53,14 @@ export class Repository {
   }
 
   getSelectUsers(gameid: number) {
-    return this.http.get(this.path + 'selectusers?gameid=' + gameid);
+      return this.http.get(this.path + 'selectusers?gameid=' + gameid);
   }
 
   getUserEtap(gameid: number, userid?: number) {
     return this.http.get(this.path + 'selectuser?gameid=' + gameid + '&userid=' + userid);
   }
 
-  getNameGame(gamename) {
+  getNameGame(gamename: string) {
     return this.http.get(this.path + 'selectgame?gamename=' + gamename);
   }
 
@@ -76,7 +77,7 @@ export class Repository {
   }
 
   saveEtap(etap: Etap) {
-    return this.http.post(this.path + 'saveetap', etap)
+    return this.http.post(this.path + 'saveetap', etap);
   }
 
   saveShtraf(shtraf: ShtrafBall) {

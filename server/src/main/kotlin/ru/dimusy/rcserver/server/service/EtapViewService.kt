@@ -12,6 +12,6 @@ class EtapViewService (val etapViewRepository: EtapViewRepository) {
     }
 
     fun selectUsers(gameid: Int): List<etapview> {
-        return etapViewRepository.selectUsers(gameid)
+        return etapViewRepository.findByGameid(gameid)
     }
 }

@@ -12,6 +12,8 @@ interface EtapViewRepository: CrudRepository<etapview, Long> {
     @Query("select t from etapview t where t.gameid = :gameid and t.userid = :userid")
     fun selectUser(@Param("gameid") gameid: Int, @Param("userid")  userid: Int): List<etapview>
 
-    @Query("select t from etapview t where t.gameid = :gameid")
-    fun selectUsers(@Param("gameid") gameid: Int): List<etapview>
+    @Query("select t from etapview t where t.gameid = :gameid and t.factoruser = :category")
+    fun selectUsers(@Param("gameid") gameid: Int, @Param("category") category: Int): List<etapview>
+
+    fun findByGameid(gameid: Int): List<etapview>
 }

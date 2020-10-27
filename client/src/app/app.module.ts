@@ -18,6 +18,7 @@ import { RatingGlobalComponent } from './rating/rating-global/rating-global.comp
 import { SprintComponent } from './judge/sprint/sprint.component';
 import { RatingPilotovComponent } from './rating/rating-pilotov/rating-pilotov.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MainComponent,
     RatingGlobalComponent,
     SprintComponent,
-    RatingPilotovComponent
+    RatingPilotovComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

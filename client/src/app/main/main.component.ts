@@ -15,8 +15,8 @@ export class MainComponent implements OnInit {
   private i: number;
   private timer: Subscription;
   private imgs: any;
-  private height = window.innerHeight - 150;
-  private width = window.innerWidth - 50;
+  private height = window.innerHeight;
+  private width = window.innerWidth;
   private widthImg = 'img100';
   private text2: Array<string>;
   private text3: Array<string>;
@@ -54,7 +54,7 @@ export class MainComponent implements OnInit {
 
   }
   loadBigFoto(i: number, j: number) {
-    this.height = window.innerHeight - 150;
+    this.height = window.innerHeight - 50;
     this.width = window.innerWidth - 50;
     this.visible = true;
     this.bigFoto = this.photosVk[i].attachments[j].photo.sizes[this.photosVk[i].attachments[j].photo.sizes.length - 1].url;
@@ -67,5 +67,9 @@ export class MainComponent implements OnInit {
     } else {
       this.widthImg = 'img100';
     }
+  }
+
+  newsdirect(i: number) {
+    if (i % 2 == 0) {return 'news_post'; } else {return 'news_post_revers'; }
   }
 }

@@ -11,19 +11,13 @@ export class AppComponent implements OnInit {
   fon = 'fon_big';
 
   ngOnInit(): void {
-    this.active[0] = 'test';
+    this.active[0] = 'buttom_color';
   }
 
   serActive(num: number) {
     for (let i = 0; i < this.active.length; i++) {
       this.active[i] = null;
     }
-    this.active[num] = 'test';
-    if (num == 2) {
-      this.fon = 'fon';
-    }
-    else {
-      this.fon = 'fon_big';
-    }
+    this.active[num] = 'buttom_color';
   }
 }
