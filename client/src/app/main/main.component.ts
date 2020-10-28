@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Repository} from '../data/repository';
-import {Subscription, timer} from 'rxjs';
-import {VkPhoto, VkWall} from '../data/user.model';
+import {Subscription} from 'rxjs';
+import {VkWall} from '../data/user.model';
 
 @Component({
   selector: 'app-main',
@@ -22,6 +22,9 @@ export class MainComponent implements OnInit {
   private text3: Array<string>;
   private visible = false;
   private bigFoto = '';
+  private path: string;
+  private bigNews: string;
+
   constructor(private repository: Repository) {
   }
 
@@ -53,12 +56,21 @@ export class MainComponent implements OnInit {
     });
 
   }
+
   loadBigFoto(i: number, j: number) {
     this.height = window.innerHeight - 50;
     this.width = window.innerWidth - 50;
     this.visible = true;
     this.bigFoto = this.photosVk[i].attachments[j].photo.sizes[this.photosVk[i].attachments[j].photo.sizes.length - 1].url;
+    this.bigNews = this.photosVk[i].text;
+    this.i = i;
+  }
 
+
+  loadNewBigFoto(i: number, j: number) {
+    this.height = window.innerHeight - 50;
+    this.width = window.innerWidth - 50;
+    this.bigFoto = this.photosVk[i].attachments[j].photo.sizes[this.photosVk[i].attachments[j].photo.sizes.length - 1].url;
   }
 
   imgWidth(i: number) {
@@ -70,6 +82,13 @@ export class MainComponent implements OnInit {
   }
 
   newsdirect(i: number) {
-    if (i % 2 == 0) {return 'news_post'; } else {return 'news_post_revers'; }
+    if (!this.photosVk[i].copy_history) {
+      this.path = 'item.attachments';
+    }
+    if (i % 2 == 0) {
+      return 'news_post';
+    } else {
+      return 'news_post_revers';
+    }
   }
 }
