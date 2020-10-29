@@ -8,8 +8,10 @@
     </div>
     <div>
       <div class="main_vk">
-        <img src="assets/logoVk.png" alt="logovk">
-        <span>&ensp;Присоединиться к нам</span>
+        <a class="href" target="_blank" href="https://vk.com/nnrctg">
+          <img src="assets/logoVk.png" alt="logovk">
+          <span>&ensp;Присоединиться к нам</span>
+        </a>
       </div>
     </div>
   </div>
@@ -40,17 +42,17 @@
         <div class=" overflow-auto news_post_text_text" [innerHTML]="item.text"></div>
       </div>
       <div class="news_post_zaglushka"></div>
-      <div *ngIf="item.attachments[0].type == 'video'" class="news_post_img shadow_new img-thumbnail"
+      <div *ngIf="item.attachments[0].type == 'video'" class="news_post_img shadow_new"
            [ngStyle]="{'background': 'url('+ item.attachments[0].video.photo_800+')', 'background-position': 'center', 'background-size': 'cover'}">
-        <a style="display: block; height: 100%" *ngIf="item.attachments[0].type == 'video'" target="_blank"
+        <a style="display: block; height: 100%; width: 100%" *ngIf="item.attachments[0].type == 'video'" target="_blank"
            title="Посмотреть"
            href="https://vk.com/video{{item.owner_id}}_{{item.attachments[0].video.id}}">
         </a>
       </div>
-      <div *ngIf="item.attachments[0].type == 'link'" class="news_post_img shadow_new img-thumbnail"
+      <div *ngIf="item.attachments[0].type == 'link'" class="news_post_img shadow_new"
       [ngStyle]="{'background': 'url('+ item.attachments[0].link.photo.sizes[0].url+')', 'background-position': 'center', 'background-size': 'cover'}">
         <a *ngIf="item.attachments[0].type == 'link'" target="_blank" title="Посмотреть"
-           href={{item.attachments[0].link.url}} style="display: block; height: 100%">
+           href={{item.attachments[0].link.url}} style="display: block; height: 100%; width: 100%">
         </a>
       </div>
       <div *ngIf="item.attachments[0].type == 'photo'" class="news_post_img"
@@ -58,7 +60,7 @@
            (click)="loadBigFoto(i, 0)">
         <div *ngFor="let item1 of item.attachments, let j = index" class="{{widthImg}}">
           <img *ngIf="item.attachments[j].type == 'photo'" (click)="loadBigFoto(i, j)" src={{item1.photo.sizes[4].url}}
-               class="backpage_0 smoll_img_size shadow_new img-thumbnail" id="{{j}}"
+               class="smoll_img_size shadow_new" id="{{j}}"
                [ngStyle]="{'z-index': item.attachments.length - j, 'position': 'absolute', 'bottom': (-j)*10+'px', 'left': (j)*10 +'px'}">
         </div>
       </div>

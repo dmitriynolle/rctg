@@ -38,10 +38,10 @@
       <button class="col-10 p-2 bg btn-r btn big16"
               style="text-align: center" [disabled]="item.shtrafid != 7 && item.shtrafid != 10 && bg[0] || allSec == 0"
               (click)="increment(i)">{{item.shtrafname}} <span class="badge badge-danger">{{ball[i]}}</span>
-        <span style="font-size: large"> ({{item.shtrafball}})</span>
+        <span> ({{item.shtrafball}})</span>
       </button>
       <button *ngIf="ball[i] > 0" class="col-2 p-2 btn-l btn big16"
-              style="text-align: center; background-color: red" (click)="decrement(i)"
+              style="text-align: center; background-color: red; border: 2px solid red" (click)="decrement(i)"
               [disabled]="item.shtrafid != 8 && item.shtrafid != 11 && bg[0] || allSec == 0">-
       </button>
       <button *ngIf="ball[i] == 0" class="col-2 p-2 bg btn-l btn big16"
