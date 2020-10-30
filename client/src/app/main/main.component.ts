@@ -18,12 +18,14 @@ export class MainComponent implements OnInit {
   private height = window.innerHeight;
   private width = window.innerWidth;
   private widthImg = 'img100';
+  private text1: Array<string>;
   private text2: Array<string>;
   private text3: Array<string>;
   private visible = false;
   private bigFoto = '';
   private path: string;
   private bigNews: string;
+  private bigData: Date;
 
   constructor(private repository: Repository) {
   }
@@ -63,6 +65,7 @@ export class MainComponent implements OnInit {
     this.visible = true;
     this.bigFoto = this.photosVk[i].attachments[j].photo.sizes[this.photosVk[i].attachments[j].photo.sizes.length - 1].url;
     this.bigNews = this.photosVk[i].text;
+    this.bigData = this.photosVk[i].date;
     this.i = i;
   }
 
@@ -90,5 +93,17 @@ export class MainComponent implements OnInit {
     } else {
       return 'news_post_revers';
     }
+  }
+
+  subText(text: string) {
+    this.text1 = text.split(' ');
+    if (this.text1.length > this.width / 30) {
+      text = '';
+      for (let j = 0; j < this.width / 30; j++) {
+        text += this.text1[j] + ' ';
+      }
+      text += '...';
+    }
+    return text;
   }
 }
