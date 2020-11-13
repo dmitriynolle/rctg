@@ -64,19 +64,22 @@ export class ResultComponent implements OnInit {
         this.userEtapStata = this.userEtapStata.sort(sortBy('nomersu'));
         this.index = index;
         console.log(this.userEtapStata, this.gameOpis, this.gameName);
-      })
+      });
     }
   }
 
   timermath(i: number) {
-    if (this.etap[this.index]['timesu' + i] % 60 < 10) {
-      return (Math.trunc(this.etap[this.index]['timesu' + i] / 60) + ' : 0' + this.etap[this.index]['timesu' + i] % 60);
+    if (this.etapK[this.index]['timesu' + i] % 60 < 10) {
+      return (Math.trunc(this.etapK[this.index]['timesu' + i] / 60) + ' : 0' + this.etapK[this.index]['timesu' + i] % 60);
     } else {
-      return (Math.trunc(this.etap[this.index]['timesu' + i] / 60) + ' : ' + this.etap[this.index]['timesu' + i] % 60);
+      return (Math.trunc(this.etapK[this.index]['timesu' + i] / 60) + ' : ' + this.etapK[this.index]['timesu' + i] % 60);
     }
   }
 
   shtraffbal(nameshtraf: string): any {
+    if (nameshtraf == '') {
+      return nameshtraf;
+    }
     this.gameOpisOne = this.gameOpis.filter(rec => rec.shtrafname == nameshtraf);
     return (this.gameOpisOne[0].shtrafball);
   }

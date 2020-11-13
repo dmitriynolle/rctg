@@ -151,6 +151,7 @@ export class Judge2Component implements OnInit {
       time: this.userEtap[0].time,
       summa: this.userEtap[0].summa
     });
+    let e = 0;
     for (let i = 0; i < this.nameGamesOpis.length; i++) {
       if (this.nameGamesOpis[i].id != 1 && this.nameGamesOpis[i].id != 2) {
         if (this.ball[i] != 0) {
@@ -163,15 +164,27 @@ export class Judge2Component implements OnInit {
             nameshtraf: this.nameGamesOpis[i].shtrafname,
             sum: this.ball[i]
           });
+          e++;
         }
       }
+    }
+    if (e == 0) {
+      this.userEtapStata.push({
+        nomeretap: this.userEtap[0].gameid,
+        nameetap: this.userEtap[0].namegames,
+        nomersu: this.su,
+        nomeruser: this.userEtap[0].userid,
+        nameuser: this.userEtap[0].username,
+        nameshtraf: '',
+        sum: 0
+      });
     }
     console.log(this.userEtapStata);
     this.popup(1);
     this.repository.saveEtap(this.etap[0]).subscribe(rec => {
       this.repository.saveUserEtapStata(this.userEtapStata).subscribe(rec => {
         this.popupwindow = true;
-        this.router.navigate(['/su1', this.game])
+        this.router.navigate(['/su1', this.game]);
       }, error => {
         this.popup(2);
       });
