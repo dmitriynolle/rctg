@@ -23,6 +23,7 @@ export class ResultComponent implements OnInit {
   popupVisible = true;
   index: number;
   timer: number;
+  etapUser: Array<EtapView>;
 
   constructor(private repository: Repository) {
   }
@@ -63,7 +64,8 @@ export class ResultComponent implements OnInit {
         this.popupVisible = false;
         this.userEtapStata = this.userEtapStata.sort(sortBy('nomersu'));
         this.index = index;
-        console.log(this.userEtapStata, this.gameOpis, this.gameName);
+        this.etapUser = this.etap.filter(res => res.userid == userId);
+        console.log(this.userEtapStata, this.etapUser);
       });
     }
   }

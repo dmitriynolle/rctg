@@ -54,16 +54,16 @@
     </div>
     <div class="row big16" *ngIf="i == 0">
       <div class="col-8 pt-2">{{item.nameuser}}</div>
-      <div class="col-2 pt-2">{{etap[index].factoruser}}</div>
+      <div class="col-2 pt-2">{{etapUser[0].factoruser}}</div>
       <div class="col-2 pt-2">
-        {{etap[index].su1 + etap[index].su2 + etap[index].su3 + etap[index].su4 + etap[index].su5}}
+        {{etapUser[0].su1 + etapUser[0].su2 + etapUser[0].su3 + etapUser[0].su4 + etapUser[0].su5}}
       </div>
     </div>
     <div class="row" *ngIf="i == 0 || userEtapStata[i].nomersu != userEtapStata[i-1].nomersu"
          style="border-bottom: solid 1px black">
       <div class="col-7 mt-3">СУ {{item.nomersu}}</div>
       <div class="col-3 mt-3">{{timermath(userEtapStata[i].nomersu)}}</div>
-      <div class="col-2 mt-3">{{etap[index]["su" + userEtapStata[i].nomersu]}}</div>
+      <div class="col-2 mt-3">{{etapUser[0]["su" + userEtapStata[i].nomersu]}}</div>
     </div>
     <div class="row">
       <div class="col-7">{{item.nameshtraf}}</div>

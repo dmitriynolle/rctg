@@ -64,7 +64,7 @@
         <div *ngFor="let item1 of item.attachments, let j = index" class="{{widthImg}}">
           <img *ngIf="item.attachments[j].type == 'photo'" (click)="loadBigFoto(i, j)" src={{item1.photo.sizes[4].url}}
                class="smoll_img_size shadow_new" id="{{j}}"
-               [ngStyle]="{'z-index': item.attachments.length - j, 'position': 'absolute', 'bottom': (-j)*10+'px', 'left': (j)*10 +'px'}">
+               [ngStyle]="{'z-index': item.attachments.length - j, 'position': 'absolute', 'bottom': (-j)*5+'px', 'left': (j)*5 +'px'}">
         </div>
       </div>
     </div>
