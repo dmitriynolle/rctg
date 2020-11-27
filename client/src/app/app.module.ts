@@ -11,7 +11,7 @@ import {EtapmenuComponent} from './etapmenu/etapmenu.component';
 import {ResultComponent} from './rating/result/result.component';
 import {OrganizermenuComponent} from './organizer/organizermenu/organizermenu.component';
 import {FinesComponent} from './organizer/fines/fines.component';
-import {PasswordComponent} from './password/password.component';
+import {RegComponent} from './password/reg/reg.component';
 import { RatingNNComponent } from './rating/rating-nn/rating-nn.component';
 import { MainComponent } from './main/main.component';
 import { RatingGlobalComponent } from './rating/rating-global/rating-global.component';
@@ -19,6 +19,7 @@ import { SprintComponent } from './judge/sprint/sprint.component';
 import { RatingPilotovComponent } from './rating/rating-pilotov/rating-pilotov.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './password/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,14 @@ import { FooterComponent } from './footer/footer.component';
     ResultComponent,
     OrganizermenuComponent,
     FinesComponent,
-    PasswordComponent,
+    RegComponent,
     RatingNNComponent,
     MainComponent,
     RatingGlobalComponent,
     SprintComponent,
     RatingPilotovComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

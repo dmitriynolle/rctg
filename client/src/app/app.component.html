@@ -14,8 +14,8 @@
           </div>
         </div>
       </div>
-      <div class="header_menu_buttom cursor {{active[2]}}" [routerLink]="['password']" (click)="serActive(2)">Мероприятия</div>
-      <div class="header_menu_buttom buttom_border buttom_color cursor {{active[3]}}" (click)="serActive(3)">Вход</div>
+      <div class="header_menu_buttom cursor {{active[2]}}" (click)="serActive(2)">Мероприятия</div>
+      <div class="header_menu_buttom buttom_border buttom_color cursor {{active[3]}}" [routerLink]="['login']" (click)="serActive(3)">Вход</div>
     </div>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
